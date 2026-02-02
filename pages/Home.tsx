@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { ARTICLES, RECIPES, SITE_NAME } from '../constants';
+import { ARTICLES, AUTOMATIONS, SITE_NAME } from '../constants';
 import ArticleCard from '../components/ArticleCard';
 import FeaturedArticle from '../components/FeaturedArticle';
-import QuizModal from '../components/QuizModal';
-import { Zap, ChefHat, ChevronLeft, ChevronRight, Mail } from 'lucide-react';
-import { Article } from '../types';
+import { Zap, Bot, ChevronLeft, ChevronRight, Mail, Terminal, Activity } from 'lucide-react';
 
 // Helper for date sorting
 const monthMap: { [key: string]: number } = {
@@ -31,77 +29,56 @@ const isRecent = (date: Date): boolean => {
 };
 
 const Home: React.FC = () => {
-  const [isQuizOpen, setIsQuizOpen] = useState(false);
   const [articlePage, setArticlePage] = useState(1);
-  const [recipePage, setRecipePage] = useState(1);
-  const itemsPerPage = 9;
+  const itemsPerPage = 6;
 
-  // Sort articles and recipes by date (newest first)
+  // Sort articles and automations by date (newest first)
   const sortedArticles = [...ARTICLES].sort((a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime());
-  const sortedRecipes = [...RECIPES].sort((a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime());
+  const sortedAutomations = [...AUTOMATIONS].sort((a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime());
 
-  // Determine the absolute latest item to feature
-  const latestArticle = sortedArticles[0];
-  const latestRecipe = sortedRecipes[0];
-
-  // We always feature the latest article at the top, and the latest recipe above the recipe list
-  const featuredArticle = latestArticle;
+  const featuredArticle = sortedArticles[0];
 
   // Pagination Logic Articles
   const allDisplayArticles = sortedArticles.slice(1);
   const displayArticles = allDisplayArticles.slice((articlePage - 1) * itemsPerPage, articlePage * itemsPerPage);
   const totalArticlePages = Math.ceil(allDisplayArticles.length / itemsPerPage);
 
-  // Pagination Logic Recipes
-  const featuredRecipe = latestRecipe;
-  const allDisplayRecipes = sortedRecipes.slice(1);
-  const displayRecipes = allDisplayRecipes.slice((recipePage - 1) * itemsPerPage, recipePage * itemsPerPage);
-  const totalRecipePages = Math.ceil(allDisplayRecipes.length / itemsPerPage);
-
   return (
     <>
       <Helmet>
-        <title>{`Accueil - ${SITE_NAME} | Nutrition & Productivité`}</title>
-        <meta name="description" content="Découvrez comment le régime low carb et cétogène peut transformer votre santé mentale, votre concentration et votre énergie au quotidien." />
+        <title>{`Accueil - ${SITE_NAME} | IA & Santé`}</title>
+        <meta name="description" content="JB Rives : Automatisation IA, Santé Métabolique et Productivité 2.0. Découvrez comment travailler moins mais mieux." />
       </Helmet>
 
       {/* Hero Section */}
-      <section className="relative bg-stone-900 text-stone-100 py-20 overflow-hidden">
-        {/* Video Background */}
-        <div className="absolute inset-0 w-full h-full z-0 pointer-events-none overflow-hidden">
-          <iframe
-            src="https://player.vimeo.com/video/1154756785?background=1&playsinline=1&muted=1"
-            className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.78vh] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-            frameBorder="0"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
-            title="Background Video"
-          ></iframe>
-          {/* Overlay to fade video into background */}
-          <div className="absolute inset-0 bg-stone-900/80"></div>
+      <section className="relative bg-stone-900 text-stone-100 py-24 overflow-hidden">
+        {/* Abstract Background */}
+        <div className="absolute inset-0 w-full h-full z-0 overflow-hidden opacity-30">
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-brand-900 via-stone-900 to-black"></div>
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto text-center px-4">
           <div className="inline-flex items-center bg-brand-900/50 text-brand-300 border border-brand-800 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide mb-6">
-            <Zap size={12} className="mr-2" /> Mise à jour 2026
+            <Zap size={12} className="mr-2" /> Retour vers le futur 2026
           </div>
           <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight">
-            Optimisez votre <span className="text-brand-500">cerveau</span> par l'assiette
+            Salut, c'est <span className="text-brand-500">JB</span>.
           </h1>
-          <p className="text-lg md:text-xl text-stone-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Une approche scientifique et minimaliste de la nutrition pour une clarté mentale durable, sans les pics de sucre.
+          <p className="text-lg md:text-2xl text-stone-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+            Je ne cherche plus à être productif. Je cherche à être libre.<br/>
+            <span className="text-brand-400">Automatisation IA</span> + <span className="text-green-400">Santé Métabolique</span>.
           </p>
 
-          <button
-            onClick={() => setIsQuizOpen(true)}
-            className="bg-brand-600 hover:bg-brand-500 text-white font-bold py-4 px-8 rounded-lg shadow-lg transform transition hover:-translate-y-1 text-lg"
-          >
-            Commencer ici
-          </button>
+          <div className="flex justify-center space-x-4">
+            <a
+              href="#automations"
+              className="bg-brand-600 hover:bg-brand-500 text-white font-bold py-4 px-8 rounded-lg shadow-lg transform transition hover:-translate-y-1 text-lg flex items-center"
+            >
+              <Bot size={20} className="mr-2" /> Voir mes outils IA
+            </a>
+          </div>
         </div>
       </section>
-
-      <QuizModal isOpen={isQuizOpen} onClose={() => setIsQuizOpen(false)} />
 
       {/* Featured Item Section */}
       {featuredArticle && (
@@ -113,8 +90,8 @@ const Home: React.FC = () => {
       {/* Articles Grid */}
       <section className="max-w-5xl mx-auto px-4 pb-16 pt-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-10 border-b border-stone-200 pb-4">
-          <h2 className="text-2xl font-serif font-bold text-stone-800">Derniers articles</h2>
-          <span className="text-xs font-medium text-stone-400 uppercase tracking-wide">Édition mensuelle</span>
+          <h2 className="text-2xl font-serif font-bold text-stone-800">Dernières pensées</h2>
+          <span className="text-xs font-medium text-stone-400 uppercase tracking-wide">Blog</span>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -147,78 +124,49 @@ const Home: React.FC = () => {
         )}
       </section>
 
-      {/* Recipes Section */}
-      <section className="bg-stone-50 py-16">
+      {/* Automations Section (formerly Recipes) */}
+      <section id="automations" className="bg-stone-50 py-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-10 border-b border-stone-200 pb-4">
             <h2 className="text-2xl font-serif font-bold text-stone-800 flex items-center">
-              <ChefHat className="mr-3 text-brand-600" /> Recettes keto populaires
+              <Bot className="mr-3 text-brand-600" /> Guides & Automatisations
             </h2>
-            <span className="text-xs font-medium text-stone-400 uppercase tracking-wide">Top 10</span>
+            <span className="text-xs font-medium text-stone-400 uppercase tracking-wide">Mes Workflows</span>
           </div>
-
-          {featuredRecipe && (
-             <div className="mb-12">
-               <FeaturedArticle article={featuredRecipe} />
-             </div>
-          )}
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {displayRecipes.map((recipe) => (
-              <ArticleCard key={recipe.id} article={recipe} isNew={isRecent(parseDate(recipe.date))} />
+            {sortedAutomations.map((automation) => (
+              <ArticleCard key={automation.id} article={automation} isNew={isRecent(parseDate(automation.date))} />
             ))}
           </div>
-
-          {/* Recipe Pagination */}
-          {totalRecipePages > 1 && (
-            <div className="flex justify-center mt-12 space-x-4 items-center">
-              <button
-                onClick={() => setRecipePage(p => Math.max(1, p - 1))}
-                disabled={recipePage === 1}
-                className="p-2 rounded-full border border-stone-200 text-stone-600 disabled:opacity-30 hover:bg-white transition-colors"
-              >
-                <ChevronLeft size={20} />
-              </button>
-              <span className="text-sm font-medium text-stone-500">
-                Page {recipePage} sur {totalRecipePages}
-              </span>
-              <button
-                onClick={() => setRecipePage(p => Math.min(totalRecipePages, p + 1))}
-                disabled={recipePage === totalRecipePages}
-                className="p-2 rounded-full border border-stone-200 text-stone-600 disabled:opacity-30 hover:bg-white transition-colors"
-              >
-                <ChevronRight size={20} />
-              </button>
-            </div>
-          )}
         </div>
       </section>
 
       {/* Value Prop Section */}
       <section className="bg-brand-50 border-y border-brand-100 py-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-serif font-bold text-stone-900 mb-12">Pourquoi le low carb ?</h2>
+          <h2 className="text-3xl font-serif font-bold text-stone-900 mb-12">Ma philosophie en 3 piliers</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="p-6">
                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-4 text-brand-600 shadow-sm border border-brand-100">
-                 <span className="font-bold text-xl">1</span>
+                 <Bot size={24} />
                </div>
-               <h3 className="font-bold text-lg mb-2 text-stone-800">Énergie stable</h3>
-               <p className="text-stone-600 text-sm">Fini le coup de barre de 14h. Profitez d'un flux d'énergie constant tout au long de la journée.</p>
+               <h3 className="font-bold text-lg mb-2 text-stone-800">IA & Automatisation</h3>
+               <p className="text-stone-600 text-sm">Ce qui prenait 1 heure doit prendre 1 minute. Déléguez aux machines ce qui n'est pas créatif.</p>
             </div>
             <div className="p-6">
-               <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-4 text-brand-600 shadow-sm border border-brand-100">
-                 <span className="font-bold text-xl">2</span>
+               <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-4 text-green-600 shadow-sm border border-brand-100">
+                 <Activity size={24} />
                </div>
-               <h3 className="font-bold text-lg mb-2 text-stone-800">Focus profond</h3>
-               <p className="text-stone-600 text-sm">Les corps cétoniques sont un super-carburant pour le cerveau, favorisant le travail intellectuel intense.</p>
+               <h3 className="font-bold text-lg mb-2 text-stone-800">Santé Métabolique</h3>
+               <p className="text-stone-600 text-sm">Le cerveau ne fonctionne pas sans le corps. Jeûne, froid, et suppression du sucre pour une clarté laser.</p>
             </div>
             <div className="p-6">
-               <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-4 text-brand-600 shadow-sm border border-brand-100">
-                 <span className="font-bold text-xl">3</span>
+               <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-4 text-stone-600 shadow-sm border border-brand-100">
+                 <Terminal size={24} />
                </div>
-               <h3 className="font-bold text-lg mb-2 text-stone-800">Santé long terme</h3>
-               <p className="text-stone-600 text-sm">Réduisez l'inflammation systémique et protégez vos fonctions cognitives futures.</p>
+               <h3 className="font-bold text-lg mb-2 text-stone-800">Liberté Radicale</h3>
+               <p className="text-stone-600 text-sm">Fini le "passive income" illusoire. Place au travail "actif mais sans effort" grâce à la technologie.</p>
             </div>
           </div>
         </div>
@@ -230,9 +178,9 @@ const Home: React.FC = () => {
           <div className="inline-flex items-center justify-center p-3 bg-brand-900/30 text-brand-400 rounded-full mb-6">
             <Mail size={24} />
           </div>
-          <h2 className="text-3xl font-serif font-bold text-white mb-4">Restez informé</h2>
+          <h2 className="text-3xl font-serif font-bold text-white mb-4">Rejoignez le mouvement</h2>
           <p className="text-stone-400 mb-8 max-w-xl mx-auto leading-relaxed">
-            Recevez nos dernières découvertes scientifiques chaque mois et ne manquez aucune mise à jour. Pas de spam, promis.
+            Pas de spam, pas de vente de formation bidon. Juste mes dernières trouvailles IA et mes réflexions sur le futur du travail.
           </p>
           <form className="flex flex-col sm:flex-row max-w-md mx-auto gap-2" onSubmit={(e) => e.preventDefault()}>
             <input

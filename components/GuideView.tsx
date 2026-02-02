@@ -3,19 +3,21 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Article } from '../types';
 import { SITE_NAME } from '../constants';
-import { ArrowLeft, Clock, CheckCircle2, Share2, ChefHat } from 'lucide-react';
+import { ArrowLeft, Clock, Share2, ChefHat, Bot, Zap } from 'lucide-react';
 import CommentSection from './CommentSection';
 import SchemaOrg from './SchemaOrg';
 
-interface RecipeViewProps {
+interface GuideViewProps {
   article: Article;
   relatedArticles: Article[];
 }
 
-const RecipeView: React.FC<RecipeViewProps> = ({ article, relatedArticles }) => {
-  const recipeSchema = {
+const GuideView: React.FC<GuideViewProps> = ({ article, relatedArticles }) => {
+  const isAutomation = article.type === 'automation';
+
+  const guideSchema = {
     "@context": "https://schema.org",
-    "@type": "Recipe",
+    "@type": isAutomation ? "HowTo" : "Recipe",
     "name": article.title,
     "image": article.imageUrl,
     "author": {
@@ -23,17 +25,22 @@ const RecipeView: React.FC<RecipeViewProps> = ({ article, relatedArticles }) => 
       "name": article.author
     },
     "description": article.excerpt,
-    "recipeIngredient": article.ingredients?.map(i => `${i.quantity} ${i.name}`),
-    "recipeInstructions": article.instructions?.map(i => ({
+    [isAutomation ? "tool" : "recipeIngredient"]: article.ingredients?.map(i => `${i.quantity} ${i.name}`),
+    [isAutomation ? "step" : "recipeInstructions"]: article.instructions?.map(i => ({
       "@type": "HowToStep",
       "text": i.text
     })),
     "datePublished": article.date
   };
 
+  const LabelIcon = isAutomation ? Bot : ChefHat;
+  const LabelText = isAutomation ? "Guide Automatisation" : "Recette Keto";
+  const IngredientsLabel = isAutomation ? "Outils Requis" : "Ingrédients";
+  const InstructionsLabel = isAutomation ? "Workflow / Étapes" : "Préparation";
+
   return (
     <>
-      <SchemaOrg schema={recipeSchema} />
+      <SchemaOrg schema={guideSchema} />
       <Helmet>
         <title>{`${article.title} - ${SITE_NAME}`}</title>
         <meta name="description" content={article.excerpt} />
@@ -58,7 +65,7 @@ const RecipeView: React.FC<RecipeViewProps> = ({ article, relatedArticles }) => 
                 </Link>
                 <div className="flex items-center space-x-2 mb-4">
                     <span className="bg-brand-600 text-white px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full flex items-center">
-                        <ChefHat size={14} className="mr-1" /> Recette keto
+                        <LabelIcon size={14} className="mr-1" /> {LabelText}
                     </span>
                     {article.tags.map(tag => (
                         <span key={tag} className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full">
@@ -103,10 +110,10 @@ const RecipeView: React.FC<RecipeViewProps> = ({ article, relatedArticles }) => 
 
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-0">
 
-                    {/* Left: Ingredients */}
+                    {/* Left: Ingredients/Tools */}
                     <div className="md:col-span-4 bg-stone-50 p-8 md:p-10 border-r border-stone-100">
                         <h3 className="text-xl font-serif font-bold text-stone-900 mb-6 flex items-center">
-                            Ingrédients
+                            {IngredientsLabel}
                         </h3>
                         <ul className="space-y-6">
                             {article.ingredients?.map((ing, idx) => (
@@ -115,7 +122,7 @@ const RecipeView: React.FC<RecipeViewProps> = ({ article, relatedArticles }) => 
                                         <img
                                             src={ing.imageUrl}
                                             alt={ing.name}
-                                            className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm group-hover:scale-110 transition-transform"
+                                            className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm group-hover:scale-110 transition-transform bg-white"
                                         />
                                     </div>
                                     <div>
@@ -127,11 +134,11 @@ const RecipeView: React.FC<RecipeViewProps> = ({ article, relatedArticles }) => 
                         </ul>
                     </div>
 
-                    {/* Right: Instructions */}
+                    {/* Right: Instructions/Workflow */}
                     <div className="md:col-span-8 p-8 md:p-10 bg-white">
                          <div className="flex justify-between items-center mb-8">
                             <h3 className="text-xl font-serif font-bold text-stone-900">
-                                Préparation
+                                {InstructionsLabel}
                             </h3>
                             <button className="flex items-center text-stone-400 hover:text-brand-600 transition-colors text-sm font-medium">
                                 <Share2 size={16} className="mr-2" /> Partager
@@ -157,7 +164,7 @@ const RecipeView: React.FC<RecipeViewProps> = ({ article, relatedArticles }) => 
 
                          {/* Bottom CTA / Comments Trigger could go here */}
                          <div className="mt-12 pt-8 border-t border-stone-100">
-                             <h4 className="font-bold text-stone-900 mb-4">Vous avez aimé cette recette ?</h4>
+                             <h4 className="font-bold text-stone-900 mb-4">Cet article vous a aidé ?</h4>
                              <CommentSection slug={article.slug} />
                          </div>
                     </div>
@@ -169,7 +176,9 @@ const RecipeView: React.FC<RecipeViewProps> = ({ article, relatedArticles }) => 
         {/* Related */}
         {relatedArticles.length > 0 && (
           <aside className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-              <h3 className="text-2xl font-serif font-bold text-stone-900 mb-8">Autres recettes keto</h3>
+              <h3 className="text-2xl font-serif font-bold text-stone-900 mb-8">
+                  {isAutomation ? "Autres guides & workflows" : "Autres recettes"}
+              </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {relatedArticles.map(rel => (
                      <div key={rel.id} className="group block bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
@@ -189,4 +198,4 @@ const RecipeView: React.FC<RecipeViewProps> = ({ article, relatedArticles }) => 
   );
 };
 
-export default RecipeView;
+export default GuideView;

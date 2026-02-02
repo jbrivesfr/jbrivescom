@@ -1,48 +1,61 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { SITE_NAME } from '../constants';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, ArrowRight } from 'lucide-react';
 
 const About: React.FC = () => {
   return (
     <>
       <Helmet>
         <title>{`À propos - ${SITE_NAME}`}</title>
-        <meta name="description" content="Notre mission : démocratiser l'approche nutritionnelle métabolique pour la performance cognitive." />
+        <meta name="description" content="L'histoire de JB Rives : de la productivité obsessionnelle à l'automatisation IA, en passant par la santé métabolique." />
       </Helmet>
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <h1 className="text-4xl font-serif font-bold text-stone-900 mb-6">Notre mission</h1>
+        <h1 className="text-4xl font-serif font-bold text-stone-900 mb-6">Salut, c'est JB.</h1>
         <p className="text-xl text-stone-600 leading-relaxed mb-10">
-          Chez <span className="font-bold text-brand-700">keto.fr</span>, nous croyons que l'alimentation est le levier le plus puissant pour optimiser le potentiel humain.
+          Il y a 10 ans, j'étais obsédé par la "Productivité" et les "Revenus Passifs". J'ai écrit des livres, créé des blogs, cherché la formule magique pour ne plus travailler.
         </p>
 
         <div className="prose prose-stone prose-lg">
+          <h2 className="text-2xl font-bold mt-8 mb-4 text-stone-800">Chapitre 1 : L'illusion du Rentier</h2>
           <p>
-            Fondé en 2024, ce projet est né d'un constat simple : la plupart des conseils nutritionnels modernes négligent l'impact direct de la glycémie sur le cerveau.
+            J'ai atteint mes objectifs. J'ai eu la liberté financière. Et vous savez quoi ? Je me suis ennuyé à mourir. J'ai compris que l'humain n'est pas fait pour l'oisiveté. Il est fait pour créer, pour résoudre des problèmes, pour avoir de l'impact.
+          </p>
+
+          <h2 className="text-2xl font-bold mt-8 mb-4 text-stone-800">Chapitre 2 : La reconstruction physique</h2>
+          <p>
+            En parallèle, mon corps m'a lâché. Fatigue, brouillard mental. J'ai dû tout réapprendre. J'ai découvert que la productivité ne sert à rien si le moteur (le corps) est encrassé. J'ai adopté le jeûne, le froid, et j'ai banni le sucre. J'ai retrouvé une énergie que je n'avais pas à 20 ans.
+          </p>
+
+          <h2 className="text-2xl font-bold mt-8 mb-4 text-stone-800">Chapitre 3 : La Révolution IA (2025)</h2>
+          <p>
+            Et puis, l'IA est arrivée. Pas juste ChatGPT. L'IA agentique. La capacité de coder sans être développeur. La capacité de déléguer à des machines.
           </p>
           <p>
-            Notre objectif n'est pas de promouvoir un dogme diététique strict, mais de fournir des informations basées sur la science pour aider chacun à retrouver :
+            J'ai réalisé que mon rêve de "travailler moins" était enfin accessible, mais pas en étant passif. En étant <strong>augmenté</strong>.
           </p>
-          
-          <ul className="grid grid-cols-1 gap-4 my-8 list-none pl-0">
-            <li className="flex items-start">
-              <CheckCircle className="text-brand-500 mr-3 mt-1 flex-shrink-0" size={20} />
-              <span>Une concentration inébranlable</span>
-            </li>
-            <li className="flex items-start">
-              <CheckCircle className="text-brand-500 mr-3 mt-1 flex-shrink-0" size={20} />
-              <span>Une humeur stable</span>
-            </li>
-            <li className="flex items-start">
-              <CheckCircle className="text-brand-500 mr-3 mt-1 flex-shrink-0" size={20} />
-              <span>Une santé métabolique robuste</span>
-            </li>
-          </ul>
+
+          <div className="bg-brand-50 border-l-4 border-brand-500 p-6 my-8">
+            <h3 className="font-bold text-brand-900 mb-2">Ma mission aujourd'hui</h3>
+            <p className="text-brand-800 m-0">
+              Aider ceux qui veulent reprendre le contrôle.
+              <br/>
+              1. <strong>Contrôle du temps</strong> grâce à l'automatisation IA.
+              <br/>
+              2. <strong>Contrôle de l'énergie</strong> grâce à la santé métabolique.
+            </p>
+          </div>
 
           <p>
-            Nous privilégions une approche "Low Carb" intelligente, riche en nutriments, durable et adaptée au mode de vie contemporain.
+            Je n'ai rien à vous vendre. Je partage juste mes outils, mes scripts et mes découvertes. Si ça peut vous faire gagner 10 ans, j'aurai réussi.
           </p>
+
+          <div className="mt-8">
+              <a href="/" className="inline-flex items-center text-brand-600 font-bold hover:text-brand-800 transition-colors">
+                  Lire mes derniers articles <ArrowRight size={20} className="ml-2" />
+              </a>
+          </div>
         </div>
       </div>
     </>

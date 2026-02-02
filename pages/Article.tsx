@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { ARTICLES, RECIPES, SITE_NAME } from '../constants';
+import { ARTICLES, AUTOMATIONS, SITE_NAME } from '../constants';
 import { Calendar, Clock, User, ArrowLeft, Share2 } from 'lucide-react';
 import CommentSection from '../components/CommentSection';
-import RecipeView from '../components/RecipeView';
+import GuideView from '../components/GuideView';
 import SchemaOrg from '../components/SchemaOrg';
 
 const Article: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   // Search in both collections
-  const article = ARTICLES.find((a) => a.slug === slug) || RECIPES.find((a) => a.slug === slug);
+  const article = ARTICLES.find((a) => a.slug === slug) || AUTOMATIONS.find((a) => a.slug === slug);
 
   // Scroll to top on route change
   useEffect(() => {
@@ -22,12 +22,12 @@ const Article: React.FC = () => {
   }
 
   // Find related from both
-  const allContent = [...ARTICLES, ...RECIPES];
+  const allContent = [...ARTICLES, ...AUTOMATIONS];
   const relatedArticles = allContent.filter(a => article.relatedIds.includes(a.id));
 
-  // Conditional Rendering for Recipe Type
-  if (article.type === 'recipe') {
-    return <RecipeView article={article} relatedArticles={relatedArticles} />;
+  // Conditional Rendering for Recipe/Automation Type
+  if (article.type === 'recipe' || article.type === 'automation') {
+    return <GuideView article={article} relatedArticles={relatedArticles} />;
   }
 
   // Standard Article Layout
@@ -45,10 +45,10 @@ const Article: React.FC = () => {
       "name": SITE_NAME,
       "logo": {
         "@type": "ImageObject",
-        "url": "https://keto.fr/logo.png"
+        "url": "https://jbrives.com/logo.png"
       }
     },
-    "datePublished": article.date, // Note: Should ideally be ISO format, but keeping as string for now
+    "datePublished": article.date,
     "description": article.excerpt
   };
 
@@ -139,7 +139,7 @@ const Article: React.FC = () => {
                  <div>
                      <h4 className="font-bold text-stone-900 text-sm mb-1">À propos de {article.author}</h4>
                      <p className="text-xs text-stone-600 leading-relaxed">
-                         Expert passionné par la biochimie nutritionnelle et l'impact du métabolisme sur les fonctions cognitives. Écrit pour keto.fr depuis 2024.
+                         Passionné par l'intersection entre le potentiel humain (santé, productivité) et la puissance de l'IA.
                      </p>
                  </div>
             </div>
