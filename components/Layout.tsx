@@ -24,7 +24,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     "name": "jbrives.com",
     "url": "https://jbrives.com",
     "logo": "https://jbrives.com/logo.png",
-    "description": "L'automatisation IA au service de votre productivité et de votre santé."
+    "description": "L'automatisation technologique au service de votre productivité et de votre santé."
   };
 
   return (
@@ -106,7 +106,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                  <span className="font-bold">jbrives.com</span>
               </div>
               <p className="text-sm leading-relaxed mb-4 max-w-xs">
-                Le blog de JB Rives. Exploration du futur du travail par l'IA et de l'optimisation humaine.
+                Le blog de JB Rives. Exploration du futur du travail par la technologie et de l'optimisation humaine.
               </p>
               <div className="text-xs text-stone-500">
                 &copy; 2026 jbrives.com - Tous droits réservés.

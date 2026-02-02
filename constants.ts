@@ -16,7 +16,7 @@ export const ARTICLES: Article[] = [
     id: "1",
     slug: "mon-retour-10-ans-plus-tard",
     title: "10 ans plus tard : pourquoi je reviens (et pourquoi tout a changé)",
-    excerpt: "Productivité, santé, et maintenant l'IA. Mon parcours depuis 10 ans et pourquoi j'ai décidé de relancer ce blog.",
+    excerpt: "Productivité, santé, et maintenant la technologie. Mon parcours depuis 10 ans et pourquoi j'ai décidé de relancer ce blog.",
     content: `
       <p class="mb-4 leading-relaxed">Salut, c'est JB.</p>
       <p class="mb-4 leading-relaxed">Ça fait 10 ans. Une décennie entière. Si vous étiez là à l'époque, vous vous souvenez peut-être de mes articles sur l'organisation, la méthode Pomodoro ou comment générer des revenus passifs. C'était une autre époque.</p>
@@ -31,9 +31,9 @@ export const ARTICLES: Article[] = [
         En parallèle, j'ai mené un combat personnel contre mon propre corps. J'ai exploré le jeûne intermittent, la nutrition métabolique, et j'ai compris que la productivité ne sert à rien sans l'énergie physique. La clarté mentale vient d'abord du ventre.
       </p>
 
-      <h2 class="text-2xl font-serif font-bold text-stone-900 mt-8 mb-4">2025 : La révolution IA</h2>
+      <h2 class="text-2xl font-serif font-bold text-stone-900 mt-8 mb-4">2025 : La révolution technologique</h2>
       <p class="mb-4 leading-relaxed">
-        Aujourd'hui, je reviens avec une nouvelle obsession : l'Automatisation par l'Intelligence Artificielle. Ce qui me prenait 1 heure me prend maintenant 1 minute. Je gère mon business depuis mon téléphone, via WhatsApp, en déléguant à des agents IA que j'ai codés moi-même.
+        Aujourd'hui, je reviens avec une nouvelle obsession : l'Automatisation par la Technologie. Ce qui me prenait 1 heure me prend maintenant 1 minute. Je gère mon business depuis mon téléphone, via WhatsApp, en déléguant à des agents technologiques que j'ai codés moi-même.
       </p>
       <p class="mb-4 leading-relaxed">
         Ce blog n'est plus là pour vous vendre du rêve. Il est là pour vous montrer le futur. Je vais partager mes outils, mes scripts, et ma philosophie pour une vie "Active mais sans effort". Bienvenue dans la version 2.0.
@@ -78,13 +78,13 @@ export const ARTICLES: Article[] = [
   {
     id: "3",
     slug: "ia-remplace-equipe",
-    title: "Comment l'IA a remplacé mon équipe (et pourquoi c'est mieux)",
+    title: "Comment la technologie a remplacé mon équipe (et pourquoi c'est mieux)",
     excerpt: "Je ne gère plus d'humains, je gère des agents. Moins de stress, plus d'efficacité.",
     content: `
       <p class="mb-4 leading-relaxed">J'ai longtemps cru qu'il fallait "scaler" en embauchant. C'était l'enfer. Management, RH, réunions... Je passais mon temps à gérer des gens au lieu de créer.</p>
       
-      <h2 class="text-2xl font-serif font-bold text-stone-900 mt-8 mb-4">L'ère des Agents IA</h2>
-      <p class="mb-4 leading-relaxed">Aujourd'hui, j'ai une "équipe" de 10 agents IA. Ils travaillent 24/7. Ils ne se plaignent pas. Ils coûtent quelques centimes par jour.</p>
+      <h2 class="text-2xl font-serif font-bold text-stone-900 mt-8 mb-4">L'ère des Agents Technologiques</h2>
+      <p class="mb-4 leading-relaxed">Aujourd'hui, j'ai une "équipe" de 10 agents technologiques. Ils travaillent 24/7. Ils ne se plaignent pas. Ils coûtent quelques centimes par jour.</p>
       <ul class="list-disc pl-5 mb-6 space-y-2">
         <li>Un agent qui trie mes emails.</li>
         <li>Un agent qui rédige mes brouillons.</li>
@@ -92,12 +92,12 @@ export const ARTICLES: Article[] = [
       </ul>
 
       <h2 class="text-2xl font-serif font-bold text-stone-900 mt-8 mb-4">Le cerveau humain est le goulot d'étranglement</h2>
-      <p class="mb-4 leading-relaxed">Notre cerveau peut générer 15 à 20 bonnes idées par jour. Mais l'exécution ? C'est lent. Avec l'IA, je peux exécuter 100 idées par jour. Le seul frein, c'est mon imagination.</p>
+      <p class="mb-4 leading-relaxed">Notre cerveau peut générer 15 à 20 bonnes idées par jour. Mais l'exécution ? C'est lent. Avec la technologie, je peux exécuter 100 idées par jour. Le seul frein, c'est mon imagination.</p>
     `,
     author: "JB Rives",
     date: "25 Janvier 2026",
     readTime: "6 min",
-    tags: ["IA", "Business", "Automatisation"],
+    tags: ["Technologie", "Business", "Automatisation"],
     imageUrl: "/images/article_ai_team.jpg",
     relatedIds: ["1", "a1"],
     type: 'article'
@@ -133,7 +133,7 @@ export const AUTOMATIONS: Article[] = [
   {
     id: "a1",
     slug: "guide-agent-whatsapp",
-    title: "Tuto : Créer son propre assistant IA sur WhatsApp",
+    title: "Tuto : Créer son propre assistant technologique sur WhatsApp",
     excerpt: "Arrêtez d'utiliser ChatGPT sur le web. Mettez-le dans votre poche, connecté à vos données.",
     content: "Dans ce guide, je vais vous montrer comment j'ai connecté OpenAI à mon WhatsApp personnel. Je lui envoie des notes vocales, il me répond avec des résumés, des tâches dans Notion, et même des blagues (il a mon sens de l'humour).",
     author: "JB Rives",
@@ -161,7 +161,7 @@ export const AUTOMATIONS: Article[] = [
     id: "a2",
     slug: "automatiser-veille-info",
     title: "Automatiser sa veille d'actualité avec Make et GPT",
-    excerpt: "Ne lisez plus les news. Laissez l'IA le faire pour vous et ne gardez que l'essentiel.",
+    excerpt: "Ne lisez plus les news. Laissez la technologie le faire pour vous et ne gardez que l'essentiel.",
     content: "Je ne scrolle plus jamais Twitter ni les sites d'actus. J'ai un système qui scanne mes sources préférées (RSS), envoie le contenu à GPT-4 pour un résumé 'style JB', et me l'envoie chaque matin à 8h dans un digest Telegram.",
     author: "JB Rives",
     date: "05 Février 2026",

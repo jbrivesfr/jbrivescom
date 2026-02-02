@@ -46,8 +46,8 @@ const Home: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>{`Accueil - ${SITE_NAME} | IA & Santé`}</title>
-        <meta name="description" content="JB Rives : Automatisation IA, Santé Métabolique et Productivité 2.0. Découvrez comment travailler moins mais mieux." />
+        <title>{`Accueil - ${SITE_NAME} | Technologie & Santé`}</title>
+        <meta name="description" content="JB Rives : Automatisation Technologique, Santé Métabolique et Productivité 2.0. Découvrez comment travailler moins mais mieux." />
       </Helmet>
 
       {/* Hero Section */}
@@ -66,7 +66,7 @@ const Home: React.FC = () => {
           </h1>
           <p className="text-lg md:text-2xl text-stone-300 max-w-2xl mx-auto mb-10 leading-relaxed">
             Je ne cherche plus à être productif. Je cherche à être libre.<br/>
-            <span className="text-brand-400">Automatisation IA</span> + <span className="text-green-400">Santé Métabolique</span>.
+            <span className="text-brand-400">Automatisation Technologique</span> + <span className="text-green-400">Santé Métabolique</span>.
           </p>
 
           <div className="flex justify-center space-x-4">
@@ -74,7 +74,7 @@ const Home: React.FC = () => {
               href="#automations"
               className="bg-brand-600 hover:bg-brand-500 text-white font-bold py-4 px-8 rounded-lg shadow-lg transform transition hover:-translate-y-1 text-lg flex items-center"
             >
-              <Bot size={20} className="mr-2" /> Voir mes outils IA
+              <Bot size={20} className="mr-2" /> Voir mes outils technologiques
             </a>
           </div>
         </div>
@@ -151,7 +151,7 @@ const Home: React.FC = () => {
                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-4 text-brand-600 shadow-sm border border-brand-100">
                  <Bot size={24} />
                </div>
-               <h3 className="font-bold text-lg mb-2 text-stone-800">IA & Automatisation</h3>
+               <h3 className="font-bold text-lg mb-2 text-stone-800">Technologie & Automatisation</h3>
                <p className="text-stone-600 text-sm">Ce qui prenait 1 heure doit prendre 1 minute. Déléguez aux machines ce qui n'est pas créatif.</p>
             </div>
             <div className="p-6">
@@ -180,7 +180,7 @@ const Home: React.FC = () => {
           </div>
           <h2 className="text-3xl font-serif font-bold text-white mb-4">Rejoignez le mouvement</h2>
           <p className="text-stone-400 mb-8 max-w-xl mx-auto leading-relaxed">
-            Pas de spam, pas de vente de formation bidon. Juste mes dernières trouvailles IA et mes réflexions sur le futur du travail.
+            Pas de spam, pas de vente de formation bidon. Juste mes dernières trouvailles technologiques et mes réflexions sur le futur du travail.
           </p>
           <form className="flex flex-col sm:flex-row max-w-md mx-auto gap-2" onSubmit={(e) => e.preventDefault()}>
             <input
