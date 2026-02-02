@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Brain, ChevronRight } from 'lucide-react';
+import { Menu, X, Terminal, ChevronRight } from 'lucide-react';
 import SchemaOrg from './SchemaOrg';
 
 interface LayoutProps {
@@ -21,10 +21,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "keto.fr",
-    "url": "https://keto.fr",
-    "logo": "https://keto.fr/logo.png", // Assuming a logo exists or just placeholder
-    "description": "Explorez la science derrière l'alimentation faible en glucides pour une meilleure santé mentale et une productivité accrue."
+    "name": "jbrives.com",
+    "url": "https://jbrives.com",
+    "logo": "https://jbrives.com/logo.png",
+    "description": "L'automatisation IA au service de votre productivité et de votre santé."
   };
 
   return (
@@ -35,9 +35,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <div className="flex justify-between items-center h-16">
             <Link to="/" className="flex items-center space-x-2 group">
               <div className="bg-stone-900 text-white p-1.5 rounded-sm group-hover:bg-brand-600 transition-colors">
-                <Brain size={24} />
+                <Terminal size={24} />
               </div>
-              <span className="text-xl font-bold tracking-tight text-stone-900">keto.fr</span>
+              <span className="text-xl font-bold tracking-tight text-stone-900">jbrives.com</span>
             </Link>
 
             {/* Desktop Nav */}
@@ -102,23 +102,22 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4 text-stone-100">
-                 <Brain size={20} />
-                 <span className="font-bold">keto.fr</span>
+                 <Terminal size={20} />
+                 <span className="font-bold">jbrives.com</span>
               </div>
               <p className="text-sm leading-relaxed mb-4 max-w-xs">
-                Explorez la science derrière l'alimentation faible en glucides pour une meilleure santé mentale et une productivité accrue.
+                Le blog de JB Rives. Exploration du futur du travail par l'IA et de l'optimisation humaine.
               </p>
               <div className="text-xs text-stone-500">
-                &copy; 2026 keto.fr - Tous droits réservés.
+                &copy; 2026 jbrives.com - Tous droits réservés.
               </div>
             </div>
             
             <div>
               <h4 className="text-stone-100 font-bold mb-4 uppercase text-xs tracking-wider">Liens rapides</h4>
               <ul className="space-y-2 text-sm">
-                <li><Link to="/" className="hover:text-brand-400 transition-colors">Articles récents</Link></li>
-                <li><Link to="/about" className="hover:text-brand-400 transition-colors">Notre mission</Link></li>
-                <li><a href="#" className="hover:text-brand-400 transition-colors">Politique de confidentialité</a></li>
+                <li><Link to="/" className="hover:text-brand-400 transition-colors">Derniers articles</Link></li>
+                <li><Link to="/about" className="hover:text-brand-400 transition-colors">Mon histoire</Link></li>
               </ul>
             </div>
 

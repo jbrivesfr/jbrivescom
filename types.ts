@@ -21,7 +21,7 @@ export interface Article {
   tags: string[];
   imageUrl: string;
   relatedIds: string[];
-  type?: 'article' | 'recipe';
+  type?: 'article' | 'recipe' | 'automation';
   ingredients?: Ingredient[];
   instructions?: InstructionStep[];
 }

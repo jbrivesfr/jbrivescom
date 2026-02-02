@@ -1,0 +1,10 @@
+
+> keto.fr@0.0.0 preview
+> vite preview
+
+  ➜  Local:   http://localhost:4173/
+  ➜  Network: http://192.168.0.2:4173/
+9:53:26 PM [vite] http proxy error: /api/comments/guide-agent-whatsapp
+AggregateError [ECONNREFUSED]:
+    at internalConnectMultiple (node:net:1134:18)
+    at afterConnectMultiple (node:net:1715:7)

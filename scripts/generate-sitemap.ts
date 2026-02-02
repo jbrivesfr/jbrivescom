@@ -2,15 +2,15 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { ARTICLES, RECIPES, SITE_NAME } from '../constants.ts';
+import { ARTICLES, AUTOMATIONS, SITE_NAME } from '../constants.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const BASE_URL = 'https://keto.fr';
+const BASE_URL = 'https://jbrives.com';
 
 const generateSitemap = () => {
-  const allContent = [...ARTICLES, ...RECIPES];
+  const allContent = [...ARTICLES, ...AUTOMATIONS];
 
   const staticRoutes = [
     '',
