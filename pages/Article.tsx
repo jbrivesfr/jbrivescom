@@ -139,7 +139,7 @@ const Article: React.FC = () => {
                  <div>
                      <h4 className="font-bold text-stone-900 text-sm mb-1">À propos de {article.author}</h4>
                      <p className="text-xs text-stone-600 leading-relaxed">
-                         Passionné par l'intersection entre le potentiel humain (santé, productivité) et la puissance de l'IA.
+                         Passionné par l'intersection entre le potentiel humain (santé, productivité) et la puissance de la technologie.
                      </p>
                  </div>
             </div>

@@ -8,7 +8,7 @@ const About: React.FC = () => {
     <>
       <Helmet>
         <title>{`À propos - ${SITE_NAME}`}</title>
-        <meta name="description" content="L'histoire de JB Rives : de la productivité obsessionnelle à l'automatisation IA, en passant par la santé métabolique." />
+        <meta name="description" content="L'histoire de JB Rives : de la productivité obsessionnelle à l'automatisation technologique, en passant par la santé métabolique." />
       </Helmet>
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -28,9 +28,9 @@ const About: React.FC = () => {
             En parallèle, mon corps m'a lâché. Fatigue, brouillard mental. J'ai dû tout réapprendre. J'ai découvert que la productivité ne sert à rien si le moteur (le corps) est encrassé. J'ai adopté le jeûne, le froid, et j'ai banni le sucre. J'ai retrouvé une énergie que je n'avais pas à 20 ans.
           </p>
 
-          <h2 className="text-2xl font-bold mt-8 mb-4 text-stone-800">Chapitre 3 : La Révolution IA (2025)</h2>
+          <h2 className="text-2xl font-bold mt-8 mb-4 text-stone-800">Chapitre 3 : La Révolution Technologique (2025)</h2>
           <p>
-            Et puis, l'IA est arrivée. Pas juste ChatGPT. L'IA agentique. La capacité de coder sans être développeur. La capacité de déléguer à des machines.
+            Et puis, la révolution technologique est arrivée. Pas juste ChatGPT. La technologie agentique. La capacité de coder sans être développeur. La capacité de déléguer à des machines.
           </p>
           <p>
             J'ai réalisé que mon rêve de "travailler moins" était enfin accessible, mais pas en étant passif. En étant <strong>augmenté</strong>.
@@ -41,7 +41,7 @@ const About: React.FC = () => {
             <p className="text-brand-800 m-0">
               Aider ceux qui veulent reprendre le contrôle.
               <br/>
-              1. <strong>Contrôle du temps</strong> grâce à l'automatisation IA.
+              1. <strong>Contrôle du temps</strong> grâce à l'automatisation technologique.
               <br/>
               2. <strong>Contrôle de l'énergie</strong> grâce à la santé métabolique.
             </p>
