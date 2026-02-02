@@ -1,0 +1,186 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * Script to resize and optimize images in public/images
+ * Usage: php scripts/run-resize.php
+ */
+
+// Configuration
+$imageDir = __DIR__ . '/../public/images';
+$maxWidth = 1200;
+$maxHeight = 1200;
+$quality = 80;
+
+// Check requirements
+if (!extension_loaded('gd')) {
+    echo "Error: GD library is not loaded.\n";
+    exit(1);
+}
+
+if (!is_dir($imageDir)) {
+    echo "Error: Directory not found: $imageDir\n";
+    exit(1);
+}
+
+// Collect files (case-insensitive)
+$patterns = ['*.jpg', '*.jpeg', '*.png', '*.JPG', '*.JPEG', '*.PNG'];
+$files = [];
+foreach ($patterns as $pattern) {
+    $found = glob("$imageDir/$pattern");
+    if ($found) {
+        $files = array_merge($files, $found);
+    }
+}
+$files = array_unique($files);
+
+if (empty($files)) {
+    echo "No images found in $imageDir\n";
+    exit(0);
+}
+
+$stats = [
+    'processed' => 0,
+    'skipped' => 0,
+    'errors' => 0,
+    'original_size' => 0,
+    'new_size' => 0,
+];
+
+echo "Starting image resize...\n";
+echo "Target: Max {$maxWidth}x{$maxHeight}, Quality {$quality}%\n";
+echo "Directory: $imageDir\n";
+echo str_repeat('-', 50) . "\n";
+
+foreach ($files as $file) {
+    $filename = basename($file);
+    $originalSize = filesize($file);
+
+    // Attempt to load image
+    $info = getimagesize($file);
+    if (!$info) {
+        echo "Skipping $filename: Not a valid image.\n";
+        $stats['errors']++;
+        continue;
+    }
+
+    $mime = $info['mime'];
+    $width = $info[0];
+    $height = $info[1];
+
+    // Check if resize is needed
+    $needsResize = ($width > $maxWidth || $height > $maxHeight);
+
+    // Load image resource
+    switch ($mime) {
+        case 'image/jpeg':
+            $src = imagecreatefromjpeg($file);
+            break;
+        case 'image/png':
+            $src = imagecreatefrompng($file);
+            break;
+        default:
+            echo "Skipping $filename: Unsupported type $mime\n";
+            $stats['skipped']++;
+            continue 2;
+    }
+
+    if (!$src) {
+        echo "Error loading $filename\n";
+        $stats['errors']++;
+        continue;
+    }
+
+    // Calculate new dimensions
+    $newWidth = $width;
+    $newHeight = $height;
+
+    if ($needsResize) {
+        $ratio = $width / $height;
+        if ($width / $maxWidth > $height / $maxHeight) {
+            $newWidth = $maxWidth;
+            $newHeight = (int)($maxWidth / $ratio);
+        } else {
+            $newHeight = $maxHeight;
+            $newWidth = (int)($maxHeight * $ratio);
+        }
+    }
+
+    // Create new image
+    $dst = imagecreatetruecolor($newWidth, $newHeight);
+
+    if ($mime == 'image/png') {
+        imagealphablending($dst, false);
+        imagesavealpha($dst, true);
+    }
+
+    // Resample
+    imagecopyresampled($dst, $src, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+
+    // Capture output
+    ob_start();
+    if ($mime == 'image/png') {
+        // PNG compression 0-9. 9 is max compression.
+        // We do not change quality setting for PNG as it is lossless (compression level only).
+        imagepng($dst, null, 9);
+    } else {
+        imagejpeg($dst, null, $quality);
+    }
+    $blob = ob_get_clean();
+
+    $newFileSize = strlen($blob);
+
+    // Save logic:
+    // If we resized, we save (assuming quality 80 is acceptable).
+    // If we didn't resize, we only save if size is smaller (optimization).
+
+    $shouldSave = false;
+
+    if ($needsResize) {
+        $shouldSave = true;
+    } elseif ($newFileSize < $originalSize) {
+        $shouldSave = true;
+    }
+
+    if ($shouldSave) {
+        file_put_contents($file, $blob);
+        $saved = $originalSize - $newFileSize;
+        $percent = round(($saved / $originalSize) * 100, 1);
+
+        $dimChange = "{$width}x{$height} -> {$newWidth}x{$newHeight}";
+        $sizeChange = formatBytes($originalSize) . " -> " . formatBytes($newFileSize);
+
+        echo "Optimized $filename: $dimChange | $sizeChange ({$percent}%)\n";
+
+        $stats['new_size'] += $newFileSize;
+    } else {
+        echo "Skipped $filename: Already optimized or smaller than target.\n";
+        $stats['new_size'] += $originalSize;
+    }
+
+    $stats['original_size'] += $originalSize;
+    $stats['processed']++;
+
+    imagedestroy($src);
+    imagedestroy($dst);
+}
+
+// Recap
+echo "\n" . str_repeat('=', 50) . "\n";
+echo "RECAP\n";
+echo str_repeat('=', 50) . "\n";
+echo "Total Images Processed: " . $stats['processed'] . "\n";
+echo "Total Original Size:    " . formatBytes($stats['original_size']) . "\n";
+echo "Total New Size:         " . formatBytes($stats['new_size']) . "\n";
+$totalSaved = $stats['original_size'] - $stats['new_size'];
+$totalPercent = $stats['original_size'] > 0 ? round(($totalSaved / $stats['original_size']) * 100, 1) : 0;
+echo "Total Saved:            " . formatBytes($totalSaved) . " ($totalPercent%)\n";
+
+function formatBytes($bytes, $precision = 2) {
+    $units = ['B', 'KB', 'MB', 'GB', 'TB'];
+    $bytes = max($bytes, 0);
+    $pow = floor(($bytes ? log($bytes) : 0) / log(1024));
+    $pow = min($pow, count($units) - 1);
+    $bytes /= (1 << (10 * $pow));
+    return round($bytes, $precision) . ' ' . $units[$pow];
+}

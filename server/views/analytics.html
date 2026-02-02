@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keto.fr Analytics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100 min-h-screen p-4 md:p-8 font-sans">
+    <div class="max-w-6xl mx-auto space-y-8">
+
+        <div class="flex justify-between items-center">
+            <h1 class="text-3xl font-bold text-gray-800">Keto.fr Analytics</h1>
+            <div id="generated-at" class="text-sm text-gray-500"></div>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+                <h3 class="text-gray-500 text-sm font-medium uppercase">Page Views (7d)</h3>
+                <p id="page-views-7d" class="text-3xl font-bold text-gray-900 mt-2">-</p>
+                <div id="growth-container" class="flex items-center mt-2 text-sm">
+                    <span id="growth-pct" class="font-bold">-</span>
+                    <span class="text-gray-400 ml-1">vs previous 7 days</span>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+                <h3 class="text-gray-500 text-sm font-medium uppercase">Unique Visitors</h3>
+                <p id="unique-visitors" class="text-3xl font-bold text-gray-900 mt-2">-</p>
+                <p class="text-xs text-gray-400 mt-1">Last 30 days</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+                <h3 class="text-gray-500 text-sm font-medium uppercase">Total Requests</h3>
+                <p id="total-requests" class="text-3xl font-bold text-gray-900 mt-2">-</p>
+                <p class="text-xs text-gray-400 mt-1">Includes assets/bots</p>
+            </div>
+             <div class="bg-white p-6 rounded-xl shadow-sm">
+                <h3 class="text-gray-500 text-sm font-medium uppercase">Top Source</h3>
+                <p id="top-referrer" class="text-xl font-bold text-gray-900 mt-2 truncate">-</p>
+                <p class="text-xs text-gray-400 mt-1">Most frequent referrer</p>
+            </div>
+        </div>
+
+        <!-- Main Chart -->
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold text-gray-800">Traffic Overview</h3>
+                <div class="flex space-x-2">
+                    <button onclick="updateChartRange(7)" class="px-3 py-1 text-sm bg-indigo-50 text-indigo-700 rounded-md hover:bg-indigo-100 transition">7 Days</button>
+                    <button onclick="updateChartRange(30)" class="px-3 py-1 text-sm bg-indigo-50 text-indigo-700 rounded-md hover:bg-indigo-100 transition">30 Days</button>
+                </div>
+            </div>
+            <div class="relative h-64 w-full">
+                <canvas id="trafficChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Tables Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            <!-- Top Pages -->
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Top Pages (30d)</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-gray-50 text-gray-600 border-b">
+                            <tr>
+                                <th class="p-3">Path</th>
+                                <th class="p-3 text-right">Views</th>
+                            </tr>
+                        </thead>
+                        <tbody id="top-pages-body" class="divide-y">
+                            <!-- Rows injected here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Referrers -->
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Top Referrers (30d)</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-gray-50 text-gray-600 border-b">
+                            <tr>
+                                <th class="p-3">Domain</th>
+                                <th class="p-3 text-right">Count</th>
+                            </tr>
+                        </thead>
+                        <tbody id="referrers-body" class="divide-y">
+                            <!-- Rows injected here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+             <!-- User Agents -->
+             <div class="bg-white p-6 rounded-xl shadow-sm lg:col-span-2">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">User Agents</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-gray-50 text-gray-600 border-b">
+                            <tr>
+                                <th class="p-3">Browser/Device</th>
+                                <th class="p-3 text-right">Count</th>
+                                <th class="p-3 text-right">Percentage</th>
+                            </tr>
+                        </thead>
+                        <tbody id="user-agents-body" class="divide-y">
+                            <!-- Rows injected here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        let fullTrafficData = {}; // Store raw data
+        let chartInstance = null;
+
+        async function init() {
+            try {
+                const res = await fetch('/api/analytics/stats');
+                if (!res.ok) throw new Error('Failed to load stats');
+                const data = await res.json();
+
+                if (data.status === 'Loading or Failed') {
+                     throw new Error('Data is still loading or failed to fetch. Please refresh in a few seconds.');
+                }
+
+                fullTrafficData = data.dailyTraffic;
+                render(data);
+            } catch (error) {
+                console.error(error);
+                document.body.innerHTML = `
+                    <div class="flex items-center justify-center min-h-screen text-red-600 bg-red-50 p-4 text-center">
+                        <div>
+                            <h2 class="text-2xl font-bold mb-2">Error Loading Data</h2>
+                            <p>${error.message}</p>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function render(data) {
+            // Summary
+            document.getElementById('generated-at').textContent = `Generated: ${new Date(data.generatedAt).toLocaleString()}`;
+
+            // Show metrics
+            // We use the 'comparison' object for the 7d view
+            if (data.comparison) {
+                document.getElementById('page-views-7d').textContent = data.comparison.currentWeekViews.toLocaleString();
+
+                const pct = parseFloat(data.comparison.growthPercentage);
+                const pctEl = document.getElementById('growth-pct');
+                pctEl.textContent = (pct > 0 ? '+' : '') + pct + '%';
+
+                if (pct > 0) pctEl.className = "font-bold text-green-600";
+                else if (pct < 0) pctEl.className = "font-bold text-red-600";
+                else pctEl.className = "font-bold text-gray-600";
+            }
+
+            document.getElementById('unique-visitors').textContent = data.uniqueVisitors.toLocaleString();
+            document.getElementById('total-requests').textContent = data.totalRequests.toLocaleString();
+
+            const topRef = data.referrers[0] ? data.referrers[0][0] : 'None';
+            document.getElementById('top-referrer').textContent = topRef;
+
+            // Initial Chart (30 days default)
+            updateChartRange(30);
+
+            // Tables
+            const createRow = (col1, col2, col3) => `
+                <tr class="hover:bg-gray-50">
+                    <td class="p-3 font-medium text-gray-700 truncate max-w-xs" title="${col1}">${col1}</td>
+                    <td class="p-3 text-right text-gray-900">${col2}</td>
+                    ${col3 ? `<td class="p-3 text-right text-gray-500">${col3}</td>` : ''}
+                </tr>
+            `;
+
+            const topPagesHtml = data.topPages.map(([path, count]) => createRow(path, count)).join('');
+            document.getElementById('top-pages-body').innerHTML = topPagesHtml;
+
+            const referrersHtml = data.referrers.map(([ref, count]) => createRow(ref, count)).join('');
+            document.getElementById('referrers-body').innerHTML = referrersHtml;
+
+            const totalUA = data.userAgents.reduce((sum, [,count]) => sum + count, 0);
+            const uaHtml = data.userAgents.map(([ua, count]) => {
+                const pct = ((count / totalUA) * 100).toFixed(1) + '%';
+                return createRow(ua, count, pct);
+            }).join('');
+            document.getElementById('user-agents-body').innerHTML = uaHtml;
+        }
+
+        function updateChartRange(days) {
+            const allDates = Object.keys(fullTrafficData); // Sorted Ascending
+            const allValues = Object.values(fullTrafficData);
+
+            let labels = [];
+            let data = [];
+
+            if (days === 7) {
+                labels = allDates.slice(-7);
+                data = allValues.slice(-7);
+            } else {
+                labels = allDates; // Assuming full data is ~30 days as requested
+                data = allValues;
+            }
+
+            const ctx = document.getElementById('trafficChart').getContext('2d');
+
+            if (chartInstance) {
+                chartInstance.destroy();
+            }
+
+            chartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: `Page Views (${days} days)`,
+                        data: data,
+                        borderColor: 'rgb(79, 70, 229)',
+                        backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                        tension: 0.3,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+        }
+
+        init();
+    </script>
+</body>
+</html>

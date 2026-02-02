@@ -1,0 +1,19 @@
+
+import React from 'react';
+import { Helmet } from 'react-helmet-async';
+
+interface SchemaOrgProps {
+  schema: Record<string, any>;
+}
+
+const SchemaOrg: React.FC<SchemaOrgProps> = ({ schema }) => {
+  return (
+    <Helmet>
+      <script type="application/ld+json">
+        {JSON.stringify(schema)}
+      </script>
+    </Helmet>
+  );
+};
+
+export default SchemaOrg;
