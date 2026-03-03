@@ -5,6 +5,7 @@ import Story from '@/components/Story'
 import BooksSection from '@/components/BooksSection'
 import YouTubeSection from '@/components/YouTubeSection'
 import ServicesSection from '@/components/ServicesSection'
+import BlogPreview from '@/components/BlogPreview'
 import ContactForm from '@/components/ContactForm'
 import Footer from '@/components/Footer'
 
@@ -58,6 +59,7 @@ export default function EnHomePage() {
         <BooksSection locale="en" />
         <YouTubeSection locale="en" />
         <ServicesSection locale="en" />
+        <BlogPreview locale="en" />
         <ContactForm locale="en" />
       </main>
       <Footer locale="en" />

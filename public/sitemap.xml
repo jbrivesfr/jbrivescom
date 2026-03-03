@@ -29,4 +29,74 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://jbrives.com/en/about"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://jbrives.com/about"/>
   </url>
+
+  <!-- Blog index pages -->
+  <url>
+    <loc>https://jbrives.com/blog</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://jbrives.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jbrives.com/en/blog"/>
+  </url>
+  <url>
+    <loc>https://jbrives.com/en/blog</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jbrives.com/en/blog"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://jbrives.com/blog"/>
+  </url>
+
+  <!-- Blog article: mon-retour-10-ans-plus-tard -->
+  <url>
+    <loc>https://jbrives.com/blog/mon-retour-10-ans-plus-tard</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://jbrives.com/blog/mon-retour-10-ans-plus-tard"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jbrives.com/en/blog/mon-retour-10-ans-plus-tard"/>
+  </url>
+  <url>
+    <loc>https://jbrives.com/en/blog/mon-retour-10-ans-plus-tard</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jbrives.com/en/blog/mon-retour-10-ans-plus-tard"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://jbrives.com/blog/mon-retour-10-ans-plus-tard"/>
+  </url>
+
+  <!-- Blog article: pourquoi-jai-arrete-de-manger-le-matin -->
+  <url>
+    <loc>https://jbrives.com/blog/pourquoi-jai-arrete-de-manger-le-matin</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://jbrives.com/blog/pourquoi-jai-arrete-de-manger-le-matin"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jbrives.com/en/blog/pourquoi-jai-arrete-de-manger-le-matin"/>
+  </url>
+  <url>
+    <loc>https://jbrives.com/en/blog/pourquoi-jai-arrete-de-manger-le-matin</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jbrives.com/en/blog/pourquoi-jai-arrete-de-manger-le-matin"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://jbrives.com/blog/pourquoi-jai-arrete-de-manger-le-matin"/>
+  </url>
+
+  <!-- Blog article: ia-remplace-equipe -->
+  <url>
+    <loc>https://jbrives.com/blog/ia-remplace-equipe</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://jbrives.com/blog/ia-remplace-equipe"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jbrives.com/en/blog/ia-remplace-equipe"/>
+  </url>
+  <url>
+    <loc>https://jbrives.com/en/blog/ia-remplace-equipe</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jbrives.com/en/blog/ia-remplace-equipe"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://jbrives.com/blog/ia-remplace-equipe"/>
+  </url>
 </urlset>

@@ -40,6 +40,12 @@ export default function Navbar({ locale }: NavbarProps) {
           >
             {t.books}
           </a>
+          <Link
+            href={`${prefix}/blog`}
+            className="text-sm font-medium text-gray-mid hover:text-navy transition-colors"
+          >
+            {t.blog}
+          </Link>
           <a
             href={`${prefix || '/'}#contact`}
             className="text-sm font-medium text-gray-mid hover:text-navy transition-colors"

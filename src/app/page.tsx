@@ -5,6 +5,7 @@ import Story from '@/components/Story'
 import BooksSection from '@/components/BooksSection'
 import YouTubeSection from '@/components/YouTubeSection'
 import ServicesSection from '@/components/ServicesSection'
+import BlogPreview from '@/components/BlogPreview'
 import ContactForm from '@/components/ContactForm'
 import Footer from '@/components/Footer'
 
@@ -55,6 +56,7 @@ export default function HomePage() {
         <BooksSection locale="fr" />
         <YouTubeSection locale="fr" />
         <ServicesSection locale="fr" />
+        <BlogPreview locale="fr" />
         <ContactForm locale="fr" />
       </main>
       <Footer locale="fr" />
