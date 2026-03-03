@@ -44,13 +44,16 @@ export default function ContactForm({ locale }: ContactFormProps) {
   }
 
   return (
-    <section id="contact" className="bg-bg-alt">
+    <section id="contact" className="bg-stone-100 border-b border-stone-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="max-w-2xl mx-auto">
-          <h2 className="font-serif text-4xl font-bold text-navy text-center mb-4">
+          <p className="text-xs font-medium text-stone-400 uppercase tracking-wide mb-2 text-center">
+            {locale === 'fr' ? 'Contact' : 'Contact'}
+          </p>
+          <h2 className="text-2xl font-serif font-bold text-stone-800 text-center mb-4">
             {t.heading}
           </h2>
-          <p className="text-gray-mid text-lg text-center mb-10">
+          <p className="text-stone-600 text-lg text-center mb-10">
             {t.body}
           </p>
 
@@ -62,7 +65,7 @@ export default function ContactForm({ locale }: ContactFormProps) {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-navy mb-1">
+                <label htmlFor="name" className="block text-sm font-medium text-stone-700 mb-1">
                   {t.name}
                 </label>
                 <input
@@ -70,13 +73,13 @@ export default function ContactForm({ locale }: ContactFormProps) {
                   id="name"
                   name="name"
                   required
-                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 text-navy text-sm transition"
+                  className="w-full px-4 py-3 rounded-lg border border-stone-200 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 text-stone-900 text-sm transition bg-white"
                   placeholder={t.name}
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-navy mb-1">
+                <label htmlFor="email" className="block text-sm font-medium text-stone-700 mb-1">
                   {t.email}
                 </label>
                 <input
@@ -84,13 +87,13 @@ export default function ContactForm({ locale }: ContactFormProps) {
                   id="email"
                   name="email"
                   required
-                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 text-navy text-sm transition"
+                  className="w-full px-4 py-3 rounded-lg border border-stone-200 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 text-stone-900 text-sm transition bg-white"
                   placeholder="votre@email.com"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-navy mb-1">
+                <label htmlFor="message" className="block text-sm font-medium text-stone-700 mb-1">
                   {t.message}
                 </label>
                 <textarea
@@ -98,7 +101,7 @@ export default function ContactForm({ locale }: ContactFormProps) {
                   name="message"
                   required
                   rows={5}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 text-navy text-sm transition resize-none"
+                  className="w-full px-4 py-3 rounded-lg border border-stone-200 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 text-stone-900 text-sm transition resize-none bg-white"
                   placeholder={locale === 'fr' ? 'Votre message...' : 'Your message...'}
                 />
               </div>
@@ -106,7 +109,7 @@ export default function ContactForm({ locale }: ContactFormProps) {
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full bg-accent text-white font-semibold py-3.5 rounded-lg hover:bg-opacity-90 disabled:opacity-60 transition-all shadow-md hover:shadow-lg text-base"
+                className="w-full bg-brand-600 hover:bg-brand-500 text-white font-bold py-4 px-8 rounded-lg shadow-lg transform transition hover:-translate-y-0.5 disabled:opacity-60 disabled:hover:translate-y-0 text-base"
               >
                 {submitting ? '...' : t.send}
               </button>

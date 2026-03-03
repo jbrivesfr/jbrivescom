@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Terminal } from 'lucide-react'
 import { Locale, translations } from '@/lib/i18n'
 
 interface NavbarProps {
@@ -10,45 +11,50 @@ export default function Navbar({ locale }: NavbarProps) {
   const prefix = locale === 'en' ? '/en' : ''
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
+    <header className="sticky top-0 z-50 bg-stone-50/95 backdrop-blur-md border-b border-stone-200">
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link
           href={prefix || '/'}
-          className="font-serif text-xl font-bold text-navy hover:text-accent transition-colors"
+          className="flex items-center gap-2 group"
         >
-          JB Rives
+          <div className="w-8 h-8 bg-stone-900 group-hover:bg-brand-600 transition-colors flex items-center justify-center rounded-sm">
+            <Terminal className="w-4 h-4 text-white" />
+          </div>
+          <span className="font-sans text-sm font-bold text-stone-900 tracking-tight">
+            jbrives.com
+          </span>
         </Link>
 
         {/* Links */}
         <div className="hidden md:flex items-center gap-8">
           <Link
             href={prefix || '/'}
-            className="text-sm font-medium text-gray-mid hover:text-navy transition-colors"
+            className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors"
           >
             {t.home}
           </Link>
           <Link
             href={`${prefix}/about`}
-            className="text-sm font-medium text-gray-mid hover:text-navy transition-colors"
+            className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors"
           >
             {t.about}
           </Link>
           <a
             href={`${prefix || '/'}#books`}
-            className="text-sm font-medium text-gray-mid hover:text-navy transition-colors"
+            className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors"
           >
             {t.books}
           </a>
           <Link
             href={`${prefix}/blog`}
-            className="text-sm font-medium text-gray-mid hover:text-navy transition-colors"
+            className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors"
           >
             {t.blog}
           </Link>
           <a
             href={`${prefix || '/'}#contact`}
-            className="text-sm font-medium text-gray-mid hover:text-navy transition-colors"
+            className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors"
           >
             {t.contact}
           </a>
@@ -58,7 +64,7 @@ export default function Navbar({ locale }: NavbarProps) {
         <div className="flex items-center gap-4">
           <Link
             href={t.langSwitchHref}
-            className="text-sm font-semibold text-accent hover:underline transition-colors border border-accent rounded px-2 py-1"
+            className="text-sm font-semibold text-brand-700 hover:text-brand-600 hover:underline transition-colors border border-brand-700 rounded px-2 py-1"
           >
             {t.langSwitch}
           </Link>

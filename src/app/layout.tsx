@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
-import { Playfair_Display, Inter } from 'next/font/google'
+import { Merriweather, Inter } from 'next/font/google'
 import './globals.css'
 
-const playfair = Playfair_Display({
+const merriweather = Merriweather({
   subsets: ['latin'],
-  variable: '--font-playfair',
+  weight: ['400', '700', '900'],
+  variable: '--font-merriweather',
   display: 'swap',
 })
 
@@ -67,7 +68,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="fr" className={`${merriweather.variable} ${inter.variable}`}>
       <body>{children}</body>
     </html>
   )

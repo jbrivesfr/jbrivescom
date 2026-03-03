@@ -36,7 +36,7 @@ function StarRating({ rating }: { rating: string }) {
         </svg>
       )}
       {Array.from({ length: emptyStars }).map((_, i) => (
-        <svg key={`empty-${i}`} className="w-4 h-4 text-gray-300 fill-current" viewBox="0 0 20 20" aria-hidden="true">
+        <svg key={`empty-${i}`} className="w-4 h-4 text-stone-300 fill-current" viewBox="0 0 20 20" aria-hidden="true">
           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
         </svg>
       ))}
@@ -55,9 +55,9 @@ export default function BookCard({
   href,
 }: BookCardProps) {
   return (
-    <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow p-6 flex flex-col items-center text-center group">
+    <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow p-6 flex flex-col items-center text-center group border border-stone-100">
       {/* Book cover */}
-      <div className="relative w-[160px] h-[240px] mb-6 rounded-lg overflow-hidden bg-gray-100 shadow-md group-hover:shadow-lg transition-shadow">
+      <div className="relative w-[160px] h-[240px] mb-6 rounded-lg overflow-hidden bg-stone-100 shadow-md group-hover:shadow-lg transition-shadow">
         <Image
           src={imgSrc}
           alt={imgAlt}
@@ -68,18 +68,18 @@ export default function BookCard({
       </div>
 
       {/* Title */}
-      <h3 className="font-serif text-xl font-bold text-navy mb-3">{title}</h3>
+      <h3 className="font-serif text-xl font-bold text-stone-900 mb-3">{title}</h3>
 
       {/* Description */}
-      <p className="text-gray-mid text-sm leading-relaxed mb-4">{description}</p>
+      <p className="text-stone-500 text-sm leading-relaxed mb-4">{description}</p>
 
       {/* Rating */}
       <div className="flex flex-col items-center gap-1 mb-5">
         <div className="flex items-center gap-2">
           <StarRating rating={rating} />
-          <span className="text-navy font-bold text-sm">{rating}★</span>
+          <span className="text-stone-800 font-bold text-sm">{rating}★</span>
         </div>
-        <span className="text-gray-400 text-xs">{reviews}</span>
+        <span className="text-stone-400 text-xs">{reviews}</span>
       </div>
 
       {/* CTA */}
@@ -87,7 +87,7 @@ export default function BookCard({
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-block bg-accent text-white text-sm font-semibold px-6 py-2.5 rounded-lg hover:bg-opacity-90 transition-all"
+        className="inline-block bg-brand-600 hover:bg-brand-500 text-white text-sm font-semibold px-6 py-2.5 rounded-lg transition-all"
       >
         {cta}
       </a>

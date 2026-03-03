@@ -17,12 +17,12 @@ export default function ArticleCard({
   const isGuide = article.type === 'automation'
 
   return (
-    <article className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden flex flex-col">
+    <article className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden flex flex-col border border-stone-100">
       {/* Guide banner */}
       {isGuide && (
-        <div className="bg-navy px-4 py-1.5 flex items-center gap-2">
-          <span className="text-xs font-bold text-accent tracking-widest uppercase">Guide</span>
-          <span className="text-xs text-gray-400">{article.readTime} {readSuffix}</span>
+        <div className="bg-stone-900 px-4 py-1.5 flex items-center gap-2">
+          <span className="text-xs font-bold text-brand-400 tracking-widest uppercase">Guide</span>
+          <span className="text-xs text-stone-400">{article.readTime} {readSuffix}</span>
         </div>
       )}
 
@@ -32,7 +32,7 @@ export default function ArticleCard({
           {article.tags.map((tag) => (
             <span
               key={tag}
-              className="text-xs font-semibold px-2 py-1 rounded-full bg-orange-50 text-accent border border-orange-200"
+              className="text-xs font-semibold px-2 py-1 rounded-full bg-brand-600/10 text-brand-600 border border-brand-600/20"
             >
               {tag}
             </span>
@@ -40,25 +40,25 @@ export default function ArticleCard({
         </div>
 
         {/* Title */}
-        <h3 className="font-serif text-xl font-bold text-navy mb-3 leading-tight">
+        <h3 className="font-serif text-xl font-bold text-stone-900 mb-3 leading-tight">
           {article.title}
         </h3>
 
         {/* Excerpt */}
-        <p className="text-gray-500 text-sm leading-relaxed mb-4 flex-1">{article.excerpt}</p>
+        <p className="text-stone-500 text-sm leading-relaxed mb-4 flex-1">{article.excerpt}</p>
 
         {/* Meta + CTA */}
-        <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+        <div className="flex items-center justify-between pt-4 border-t border-stone-100">
           {isGuide ? (
-            <span className="text-xs text-gray-400">{article.date}</span>
+            <span className="text-xs text-stone-400">{article.date}</span>
           ) : (
-            <span className="text-xs text-gray-400">
+            <span className="text-xs text-stone-400">
               {article.date} · {article.readTime} {readSuffix}
             </span>
           )}
           <Link
             href={href}
-            className="text-sm font-semibold text-accent hover:underline transition-colors"
+            className="text-sm font-semibold text-brand-600 hover:text-brand-500 hover:underline transition-colors"
           >
             {ctaLabel} →
           </Link>

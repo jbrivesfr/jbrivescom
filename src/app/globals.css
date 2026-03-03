@@ -8,7 +8,7 @@
   }
 
   body {
-    @apply text-navy bg-white font-sans antialiased;
+    @apply text-stone-900 bg-stone-50 font-sans antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {

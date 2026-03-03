@@ -33,12 +33,13 @@ export default function BlogPage() {
   return (
     <>
       <Navbar locale="fr" />
-      <main className="bg-[#f8f8fc] min-h-screen">
+      <main className="bg-stone-50 min-h-screen">
         {/* Header */}
-        <section className="bg-navy text-white py-16 px-4">
+        <section className="bg-stone-900 text-stone-100 py-16 px-4">
           <div className="max-w-4xl mx-auto text-center">
+            <p className="text-xs font-medium text-brand-400 uppercase tracking-wide mb-3">Blog</p>
             <h1 className="font-serif text-4xl md:text-5xl font-bold mb-4">Le Blog</h1>
-            <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+            <p className="text-stone-300 text-lg max-w-2xl mx-auto">
               Productivité, santé, technologie — mes expériences, mes outils, ma philosophie.
             </p>
           </div>
@@ -47,7 +48,9 @@ export default function BlogPage() {
         <div className="max-w-5xl mx-auto px-4 py-16 space-y-16">
           {/* Articles */}
           <section>
-            <h2 className="font-serif text-2xl font-bold text-navy mb-8">Articles</h2>
+            <h2 className="font-serif text-2xl font-bold text-stone-800 mb-8 flex items-center gap-2">
+              Articles
+            </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
               {articles.map((article) => (
                 <ArticleCard
@@ -62,8 +65,10 @@ export default function BlogPage() {
 
           {/* Guides & Automations */}
           <section>
-            <h2 className="font-serif text-2xl font-bold text-navy mb-2">Guides & Automatisations</h2>
-            <p className="text-gray-500 text-sm mb-8">Tutoriels approfondis et systèmes prêts à déployer.</p>
+            <h2 className="font-serif text-2xl font-bold text-stone-800 mb-2 flex items-center gap-2">
+              Guides & Automatisations
+            </h2>
+            <p className="text-stone-500 text-sm mb-8">Tutoriels approfondis et systèmes prêts à déployer.</p>
             <div className="grid md:grid-cols-2 gap-8">
               {guides.map((article) => (
                 <ArticleCard

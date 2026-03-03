@@ -8,7 +8,7 @@ export default function YouTubeSection({ locale }: YouTubeSectionProps) {
   const t = translations[locale].youtube
 
   return (
-    <section className="bg-bg-alt">
+    <section className="bg-stone-100 border-b border-stone-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="max-w-2xl mx-auto text-center">
           {/* YouTube icon */}
@@ -25,16 +25,17 @@ export default function YouTubeSection({ locale }: YouTubeSectionProps) {
             </svg>
           </div>
 
-          <h2 className="font-serif text-4xl font-bold text-navy mb-4">
+          <p className="text-xs font-medium text-stone-400 uppercase tracking-wide mb-3">YouTube</p>
+          <h2 className="text-2xl font-serif font-bold text-stone-800 mb-4">
             {t.heading}
           </h2>
 
           {/* Big stat */}
-          <div className="inline-block bg-navy text-white rounded-full px-8 py-3 mb-6">
+          <div className="inline-block bg-stone-900 text-stone-100 rounded-full px-8 py-3 mb-6">
             <p className="font-serif text-3xl font-bold">{t.stat}</p>
           </div>
 
-          <p className="text-gray-mid text-lg leading-relaxed mb-8">
+          <p className="text-stone-600 text-lg leading-relaxed mb-8">
             {t.body}
           </p>
 
@@ -42,7 +43,7 @@ export default function YouTubeSection({ locale }: YouTubeSectionProps) {
             href="https://www.youtube.com/@lefasting"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-[#FF0000] text-white font-semibold px-8 py-4 rounded-lg hover:bg-red-700 transition-colors shadow-md"
+            className="inline-flex items-center gap-3 bg-brand-600 hover:bg-brand-500 text-white font-bold py-4 px-8 rounded-lg shadow-lg transform transition hover:-translate-y-1"
           >
             <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />

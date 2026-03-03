@@ -9,13 +9,16 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
   const t = translations[locale].services
 
   return (
-    <section className="bg-white">
+    <section className="bg-white border-b border-stone-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="text-center mb-12">
-          <h2 className="font-serif text-4xl font-bold text-navy mb-4">
+        <div className="mb-12">
+          <p className="text-xs font-medium text-stone-400 uppercase tracking-wide mb-2">
+            {locale === 'fr' ? 'Services' : 'Services'}
+          </p>
+          <h2 className="text-2xl font-serif font-bold text-stone-800 mb-3">
             {t.heading}
           </h2>
-          <p className="text-gray-mid text-lg max-w-xl mx-auto">
+          <p className="text-stone-600 text-base max-w-xl">
             {t.subtitle}
           </p>
         </div>
