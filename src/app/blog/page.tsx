@@ -26,6 +26,9 @@ export const metadata: Metadata = {
   },
 }
 
+const articles = articlesFR.filter((a) => a.type === 'article')
+const guides = articlesFR.filter((a) => a.type === 'automation')
+
 export default function BlogPage() {
   return (
     <>
@@ -41,19 +44,38 @@ export default function BlogPage() {
           </div>
         </section>
 
-        {/* Articles Grid */}
-        <section className="max-w-5xl mx-auto px-4 py-16">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {articlesFR.map((article) => (
-              <ArticleCard
-                key={article.slug}
-                article={article}
-                href={`/blog/${article.slug}`}
-                ctaLabel="Lire la suite"
-              />
-            ))}
-          </div>
-        </section>
+        <div className="max-w-5xl mx-auto px-4 py-16 space-y-16">
+          {/* Articles */}
+          <section>
+            <h2 className="font-serif text-2xl font-bold text-navy mb-8">Articles</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+              {articles.map((article) => (
+                <ArticleCard
+                  key={article.slug}
+                  article={article}
+                  href={`/blog/${article.slug}`}
+                  ctaLabel="Lire la suite"
+                />
+              ))}
+            </div>
+          </section>
+
+          {/* Guides & Automations */}
+          <section>
+            <h2 className="font-serif text-2xl font-bold text-navy mb-2">Guides & Automatisations</h2>
+            <p className="text-gray-500 text-sm mb-8">Tutoriels approfondis et systèmes prêts à déployer.</p>
+            <div className="grid md:grid-cols-2 gap-8">
+              {guides.map((article) => (
+                <ArticleCard
+                  key={article.slug}
+                  article={article}
+                  href={`/blog/${article.slug}`}
+                  ctaLabel="Lire le guide"
+                />
+              ))}
+            </div>
+          </section>
+        </div>
       </main>
       <Footer locale="fr" />
     </>

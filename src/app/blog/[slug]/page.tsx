@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import { articlesFR, getArticleBySlug, getAllSlugs } from '@/lib/articles'
+import { getArticleBySlug, getAllSlugs } from '@/lib/articles'
 
 export const dynamic = 'force-static'
 
@@ -35,7 +35,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `https://jbrives.com/blog/${article.slug}`,
       locale: 'fr_FR',
       type: 'article',
-      publishedTime: article.date,
       authors: ['JB Rives'],
     },
   }
@@ -44,6 +43,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default function BlogPostPage({ params }: Props) {
   const article = getArticleBySlug(params.slug, 'fr')
   if (!article) notFound()
+
+  const isGuide = article.type === 'automation'
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -84,8 +85,13 @@ export default function BlogPostPage({ params }: Props) {
 
           {/* Header */}
           <header className="mb-10">
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mb-4">
+            {/* Type badge + tags */}
+            <div className="flex flex-wrap items-center gap-2 mb-4">
+              {isGuide && (
+                <span className="text-xs font-bold px-3 py-1 rounded-full bg-navy text-accent border border-navy tracking-widest uppercase">
+                  Guide
+                </span>
+              )}
               {article.tags.map((tag) => (
                 <span
                   key={tag}
@@ -117,13 +123,17 @@ export default function BlogPostPage({ params }: Props) {
               prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4
               prose-p:text-gray-700 prose-p:leading-relaxed
               prose-li:text-gray-700
-              prose-ul:list-disc prose-ul:pl-6"
+              prose-ul:list-disc prose-ul:pl-6
+              prose-ol:list-decimal prose-ol:pl-6
+              prose-strong:text-navy"
             dangerouslySetInnerHTML={{ __html: article.content }}
           />
 
           {/* Footer CTA */}
           <div className="mt-16 pt-8 border-t border-gray-200 text-center">
-            <p className="text-gray-500 mb-4">Vous avez aimé cet article ?</p>
+            <p className="text-gray-500 mb-4">
+              {isGuide ? 'Vous avez aimé ce guide ?' : 'Vous avez aimé cet article ?'}
+            </p>
             <Link
               href="/blog"
               className="inline-block bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors"

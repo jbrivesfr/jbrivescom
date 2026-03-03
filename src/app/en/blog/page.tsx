@@ -25,6 +25,9 @@ export const metadata: Metadata = {
   },
 }
 
+const articles = articlesEN.filter((a) => a.type === 'article')
+const guides = articlesEN.filter((a) => a.type === 'automation')
+
 export default function EnBlogPage() {
   return (
     <>
@@ -40,20 +43,40 @@ export default function EnBlogPage() {
           </div>
         </section>
 
-        {/* Articles Grid */}
-        <section className="max-w-5xl mx-auto px-4 py-16">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {articlesEN.map((article) => (
-              <ArticleCard
-                key={article.slug}
-                article={article}
-                href={`/en/blog/${article.slug}`}
-                ctaLabel="Read more"
-                readSuffix="read"
-              />
-            ))}
-          </div>
-        </section>
+        <div className="max-w-5xl mx-auto px-4 py-16 space-y-16">
+          {/* Articles */}
+          <section>
+            <h2 className="font-serif text-2xl font-bold text-navy mb-8">Articles</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              {articles.map((article) => (
+                <ArticleCard
+                  key={article.slug}
+                  article={article}
+                  href={`/en/blog/${article.slug}`}
+                  ctaLabel="Read more"
+                  readSuffix="read"
+                />
+              ))}
+            </div>
+          </section>
+
+          {/* Guides & Automations */}
+          <section>
+            <h2 className="font-serif text-2xl font-bold text-navy mb-2">Guides & Automations</h2>
+            <p className="text-gray-500 text-sm mb-8">In-depth tutorials and ready-to-deploy systems.</p>
+            <div className="grid md:grid-cols-2 gap-8">
+              {guides.map((article) => (
+                <ArticleCard
+                  key={article.slug}
+                  article={article}
+                  href={`/en/blog/${article.slug}`}
+                  ctaLabel="Read the guide"
+                  readSuffix="read"
+                />
+              ))}
+            </div>
+          </section>
+        </div>
       </main>
       <Footer locale="en" />
     </>

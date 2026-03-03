@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Core pages -->
   <url>
     <loc>https://jbrives.com/</loc>
     <priority>1.0</priority>
@@ -46,7 +48,7 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://jbrives.com/blog"/>
   </url>
 
-  <!-- Blog article: mon-retour-10-ans-plus-tard -->
+  <!-- Article: mon-retour-10-ans-plus-tard -->
   <url>
     <loc>https://jbrives.com/blog/mon-retour-10-ans-plus-tard</loc>
     <priority>0.8</priority>
@@ -64,7 +66,7 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://jbrives.com/blog/mon-retour-10-ans-plus-tard"/>
   </url>
 
-  <!-- Blog article: pourquoi-jai-arrete-de-manger-le-matin -->
+  <!-- Article: pourquoi-jai-arrete-de-manger-le-matin -->
   <url>
     <loc>https://jbrives.com/blog/pourquoi-jai-arrete-de-manger-le-matin</loc>
     <priority>0.8</priority>
@@ -82,12 +84,12 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://jbrives.com/blog/pourquoi-jai-arrete-de-manger-le-matin"/>
   </url>
 
-  <!-- Blog article: ia-remplace-equipe -->
+  <!-- Article: ia-remplace-equipe -->
   <url>
     <loc>https://jbrives.com/blog/ia-remplace-equipe</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
-    <lastmod>2026-01-28</lastmod>
+    <lastmod>2026-01-25</lastmod>
     <xhtml:link rel="alternate" hreflang="fr" href="https://jbrives.com/blog/ia-remplace-equipe"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://jbrives.com/en/blog/ia-remplace-equipe"/>
   </url>
@@ -95,8 +97,63 @@
     <loc>https://jbrives.com/en/blog/ia-remplace-equipe</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
-    <lastmod>2026-01-28</lastmod>
+    <lastmod>2026-01-25</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://jbrives.com/en/blog/ia-remplace-equipe"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://jbrives.com/blog/ia-remplace-equipe"/>
   </url>
+
+  <!-- Article: cerveau-brouillard-solutions -->
+  <url>
+    <loc>https://jbrives.com/blog/cerveau-brouillard-solutions</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://jbrives.com/blog/cerveau-brouillard-solutions"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jbrives.com/en/blog/cerveau-brouillard-solutions"/>
+  </url>
+  <url>
+    <loc>https://jbrives.com/en/blog/cerveau-brouillard-solutions</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jbrives.com/en/blog/cerveau-brouillard-solutions"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://jbrives.com/blog/cerveau-brouillard-solutions"/>
+  </url>
+
+  <!-- Guide: guide-agent-whatsapp -->
+  <url>
+    <loc>https://jbrives.com/blog/guide-agent-whatsapp</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-02-01</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://jbrives.com/blog/guide-agent-whatsapp"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jbrives.com/en/blog/guide-agent-whatsapp"/>
+  </url>
+  <url>
+    <loc>https://jbrives.com/en/blog/guide-agent-whatsapp</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-02-01</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jbrives.com/en/blog/guide-agent-whatsapp"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://jbrives.com/blog/guide-agent-whatsapp"/>
+  </url>
+
+  <!-- Guide: automatiser-veille-info -->
+  <url>
+    <loc>https://jbrives.com/blog/automatiser-veille-info</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-02-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://jbrives.com/blog/automatiser-veille-info"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jbrives.com/en/blog/automatiser-veille-info"/>
+  </url>
+  <url>
+    <loc>https://jbrives.com/en/blog/automatiser-veille-info</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-02-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jbrives.com/en/blog/automatiser-veille-info"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://jbrives.com/blog/automatiser-veille-info"/>
+  </url>
+
 </urlset>
