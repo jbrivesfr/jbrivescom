@@ -1,9 +1,5 @@
 node_modules
+.next
 .git
-.env
-dist
-coverage
-research
-comments
-*.log
-.DS_Store
+*.md
+.env*
