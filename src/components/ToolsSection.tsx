@@ -22,18 +22,24 @@ export default function ToolsSection({ locale }: ToolsSectionProps) {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {t.items.map((item, i) => (
-            <a
-              key={i}
-              href={item.url}
-              target={item.url.startsWith('http') ? '_blank' : undefined}
-              rel={item.url.startsWith('http') ? 'noopener noreferrer' : undefined}
-              className="block rounded-2xl border border-stone-200 bg-[#FBF9F9] p-6 transition hover:border-[#0071C0]/40 hover:shadow-md hover:-translate-y-0.5"
-            >
-              <h3 className="font-serif font-bold text-xl text-[#001523] mb-2">{item.name}</h3>
-              <p className="text-stone-600 text-sm leading-relaxed">{item.desc}</p>
-            </a>
-          ))}
+          {t.items.map((item, i) => {
+            const linked = item.url && item.url !== '#' && item.url.startsWith('http')
+            const inner = (
+              <>
+                <h3 className="font-serif font-bold text-xl text-[#001523] mb-2">{item.name}</h3>
+                <p className="text-stone-600 text-sm leading-relaxed">{item.desc}</p>
+              </>
+            )
+            const cls =
+              'block rounded-2xl border border-stone-200 bg-[#FBF9F9] p-6 transition hover:border-[#0071C0]/40 hover:shadow-md'
+            return linked ? (
+              <a key={i} href={item.url} target="_blank" rel="noopener noreferrer" className={cls + ' hover:-translate-y-0.5'}>
+                {inner}
+              </a>
+            ) : (
+              <div key={i} className={cls}>{inner}</div>
+            )
+          })}
         </div>
       </div>
     </section>

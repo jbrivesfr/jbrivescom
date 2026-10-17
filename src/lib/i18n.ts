@@ -60,9 +60,12 @@ export const translations = {
       heading: 'Mes outils du moment',
       subtitle: "Ce que j'utilise et recommande en ce moment.",
       items: [
-        { name: '[Outil à compléter]', desc: '[Courte description — à remplir]', url: '#' },
-        { name: '[Outil à compléter]', desc: '[Courte description — à remplir]', url: '#' },
-        { name: '[Outil à compléter]', desc: '[Courte description — à remplir]', url: '#' },
+        { name: 'ea-topcomments', desc: "Analyse en continu les commentaires YouTube pour capter le vrai langage de mon audience sur mes niches.", url: '#' },
+        { name: 'ea-seo', desc: "Observatoire SEO maison : Search Console, crawl et historique pour piloter le référencement sans outil payant.", url: '#' },
+        { name: 'ea-auto-manager', desc: "Orchestrateur de workflows autonomes qui pilote mes agents IA façon jeu de stratégie.", url: '#' },
+        { name: 'ea-memory-cards', desc: "Mémoire persistante et recherchable pour mes agents — ils se souviennent de tout.", url: '#' },
+        { name: 'ea-voice-ideas', desc: "Je dépose un mémo vocal, il est transcrit automatiquement et rangé dans la mémoire.", url: '#' },
+        { name: 'ea-dashboard', desc: "Le cockpit qui surveille toute mon infrastructure d'agents en un coup d'œil.", url: '#' },
       ],
     },
     // Services
@@ -190,9 +193,12 @@ export const translations = {
       heading: 'My Current Tools',
       subtitle: 'What I use and recommend right now.',
       items: [
-        { name: '[Tool TBD]', desc: '[Short description — to fill]', url: '#' },
-        { name: '[Tool TBD]', desc: '[Short description — to fill]', url: '#' },
-        { name: '[Tool TBD]', desc: '[Short description — to fill]', url: '#' },
+        { name: 'ea-topcomments', desc: "Continuously mines YouTube comments to capture my audience's real language in my niches.", url: '#' },
+        { name: 'ea-seo', desc: "In-house SEO observatory: Search Console, crawl and history to steer rankings without a paid tool.", url: '#' },
+        { name: 'ea-auto-manager', desc: "Autonomous workflow orchestrator that runs my AI agents like a strategy game.", url: '#' },
+        { name: 'ea-memory-cards', desc: "Persistent, searchable memory for my agents — they remember everything.", url: '#' },
+        { name: 'ea-voice-ideas', desc: "I drop a voice memo, it gets transcribed and filed into memory automatically.", url: '#' },
+        { name: 'ea-dashboard', desc: "The cockpit that watches my whole agent infrastructure at a glance.", url: '#' },
       ],
     },
     // Services
