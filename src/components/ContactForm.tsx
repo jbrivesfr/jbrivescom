@@ -18,25 +18,37 @@ export default function ContactForm({ locale }: ContactFormProps) {
     const form = e.currentTarget
     const data = new FormData(form)
 
+    const name = data.get('name') as string
+    const email = data.get('email') as string
+    const message = data.get('message') as string
+
     try {
-      // Try Formspree first (replace FORMSPREE_ID with real ID when available)
-      const FORMSPREE_ID = 'xpwzgkqo' // placeholder — JB to replace with real ID
-      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      // Web3Forms — livre les soumissions à jbrives@gmail.com.
+      // Récupérer la clé sur web3forms.com (entrer jbrives@gmail.com) et la coller ici.
+      const WEB3FORMS_ACCESS_KEY = 'REPLACE_WITH_WEB3FORMS_KEY'
+      if (WEB3FORMS_ACCESS_KEY.startsWith('REPLACE_')) throw new Error('no key yet')
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        body: data,
-        headers: { Accept: 'application/json' },
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `Nouveau message depuis jbrives.com — ${name}`,
+          from_name: name,
+          name,
+          email,
+          message,
+        }),
       })
       if (res.ok) {
         setSubmitted(true)
       } else {
-        throw new Error('Formspree error')
+        throw new Error('web3forms error')
       }
     } catch {
-      // Fallback: mailto
-      const name = data.get('name') as string
-      const email = data.get('email') as string
-      const message = data.get('message') as string
-      window.location.href = `mailto:jb@fasting.fr?subject=Message de ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}%0A%0A—${encodeURIComponent(email)}`
+      // Repli : ouvre le client mail du visiteur, pré-adressé à jbrives@gmail.com
+      window.location.href = `mailto:jbrives@gmail.com?subject=${encodeURIComponent(
+        `Message de ${name} (jbrives.com)`,
+      )}&body=${encodeURIComponent(`${message}\n\n— ${name} <${email}>`)}`
       setSubmitted(true)
     } finally {
       setSubmitting(false)
