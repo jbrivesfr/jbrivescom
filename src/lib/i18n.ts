@@ -15,10 +15,10 @@ export const translations = {
     // Hero
     hero: {
       name: 'JB Rives',
-      subtitle: 'Auteur • Créateur • Stratège',
+      subtitle: 'Auteur • Producteur de contenu • Cobaye numérique',
       intro:
         "J'ai perdu 20 kilos avec le jeûne intermittent, j'ai écrit les livres dessus, j'ai créé une communauté de 450\u00a0000 personnes sur YouTube — et maintenant j'aide les entrepreneurs à faire pareil dans leur domaine\u00a0: aller vite, aller loin, avec les bons outils.",
-      cta: 'Discutons',
+      cta: 'On en parle',
     },
     // Story
     story: {
@@ -51,10 +51,19 @@ export const translations = {
     },
     // YouTube
     youtube: {
-      heading: 'La chaîne YouTube JB Rives',
+      heading: '',
       stat: '@jbrives',
       body: "Je publie désormais sur ma propre chaîne : @jbrives (jeûne, nutrition, performance et coulisses d'entrepreneur). Abonnez-vous, c'est là que tout se passe.",
       cta: 'Voir la chaîne',
+    },
+    tools: {
+      heading: 'Mes outils du moment',
+      subtitle: "Ce que j'utilise et recommande en ce moment.",
+      items: [
+        { name: '[Outil à compléter]', desc: '[Courte description — à remplir]', url: '#' },
+        { name: '[Outil à compléter]', desc: '[Courte description — à remplir]', url: '#' },
+        { name: '[Outil à compléter]', desc: '[Courte description — à remplir]', url: '#' },
+      ],
     },
     // Services
     services: {
@@ -85,7 +94,7 @@ export const translations = {
     },
     // Contact
     contact: {
-      heading: 'Discutons',
+      heading: 'On en parle',
       body: 'Vous avez un projet\u00a0? Une question\u00a0? Je réponds à tout le monde.',
       name: 'Nom',
       email: 'Email',
@@ -172,10 +181,19 @@ export const translations = {
     },
     // YouTube
     youtube: {
-      heading: 'The JB Rives YouTube Channel',
+      heading: '',
       stat: '@jbrives',
       body: "I now publish on my own channel: @jbrives (fasting, nutrition, performance and founder behind-the-scenes). Subscribe, that's where it all happens.",
       cta: 'Watch the Channel',
+    },
+    tools: {
+      heading: 'My Current Tools',
+      subtitle: 'What I use and recommend right now.',
+      items: [
+        { name: '[Tool TBD]', desc: '[Short description — to fill]', url: '#' },
+        { name: '[Tool TBD]', desc: '[Short description — to fill]', url: '#' },
+        { name: '[Tool TBD]', desc: '[Short description — to fill]', url: '#' },
+      ],
     },
     // Services
     services: {

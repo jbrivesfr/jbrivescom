@@ -26,9 +26,11 @@ export default function YouTubeSection({ locale }: YouTubeSectionProps) {
           </div>
 
           <p className="text-[13px] uppercase tracking-[0.16em] text-[#001523]/50 mb-4">YouTube</p>
-          <h2 className="text-[34px] md:text-[56px] leading-[1.1] mb-6">
-            {t.heading}
-          </h2>
+          {t.heading ? (
+            <h2 className="text-[34px] md:text-[56px] leading-[1.1] mb-6">
+              {t.heading}
+            </h2>
+          ) : null}
 
           {/* Big stat */}
           <div className="inline-block bg-[#001523] text-white rounded-full px-8 py-3 mb-7">

@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar'
 import HeroBg from '@/components/HeroBg'
 import YouTubeSection from '@/components/YouTubeSection'
 import ServicesSection from '@/components/ServicesSection'
+import ToolsSection from '@/components/ToolsSection'
 import ContactForm from '@/components/ContactForm'
 import Footer from '@/components/Footer'
 
@@ -51,6 +52,7 @@ export default function HomePage() {
         <HeroBg locale="fr" />
         <YouTubeSection locale="fr" />
         <ServicesSection locale="fr" />
+        <ToolsSection locale="fr" />
         <ContactForm locale="fr" />
       </main>
       <Footer locale="fr" />
