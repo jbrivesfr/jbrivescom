@@ -11,12 +11,12 @@ export default function BooksSection({ locale }: BooksSectionProps) {
   return (
     <section id="books" className="bg-stone-50 border-b border-stone-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="mb-12">
+        <div className="mb-14 text-center">
           <p className="text-xs font-medium text-stone-400 uppercase tracking-wide mb-2">
             {locale === 'fr' ? 'Livres' : 'Books'}
           </p>
-          <h2 className="text-2xl font-serif font-bold text-stone-800">
-            {t.heading}
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-stone-800">
+            {locale === 'fr' ? 'Les livres de JB Rives' : 'Books by JB Rives'}
           </h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-2xl mx-auto">

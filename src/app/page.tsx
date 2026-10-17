@@ -1,11 +1,8 @@
 import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
-import Hero from '@/components/Hero'
-import Story from '@/components/Story'
-import BooksSection from '@/components/BooksSection'
+import HeroBg from '@/components/HeroBg'
 import YouTubeSection from '@/components/YouTubeSection'
 import ServicesSection from '@/components/ServicesSection'
-import BlogPreview from '@/components/BlogPreview'
 import ContactForm from '@/components/ContactForm'
 import Footer from '@/components/Footer'
 
@@ -34,10 +31,10 @@ const jsonLd = {
   '@type': 'Person',
   name: 'JB Rives',
   url: 'https://jbrives.com',
-  sameAs: ['https://www.youtube.com/@lefasting'],
+  sameAs: ['https://www.youtube.com/@jbrives', 'https://www.youtube.com/@lefasting'],
   jobTitle: 'Author, Creator & Digital Strategist',
   knowsAbout: ['Intermittent Fasting', 'Content Strategy', 'AI Agents', 'Personal Branding'],
-  image: 'https://jbrives.com/images/jb-hero.jpg',
+  image: 'https://jbrives.com/images/jb-hero-bg.jpg',
   description:
     "Fondateur du Fasting.fr et Club Fasting. Auteur de Le Fasting et Gras du Ventre. J'aide les créateurs et entrepreneurs avec la stratégie, le contenu et les agents IA.",
 }
@@ -49,14 +46,11 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Navbar locale="fr" />
-      <main>
-        <Hero locale="fr" />
-        <Story locale="fr" />
-        <BooksSection locale="fr" />
+      <Navbar locale="fr" minimal />
+      <main className="tim-home">
+        <HeroBg locale="fr" />
         <YouTubeSection locale="fr" />
         <ServicesSection locale="fr" />
-        <BlogPreview locale="fr" />
         <ContactForm locale="fr" />
       </main>
       <Footer locale="fr" />

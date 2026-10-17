@@ -1,11 +1,8 @@
 import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
-import Hero from '@/components/Hero'
-import Story from '@/components/Story'
-import BooksSection from '@/components/BooksSection'
+import HeroBg from '@/components/HeroBg'
 import YouTubeSection from '@/components/YouTubeSection'
 import ServicesSection from '@/components/ServicesSection'
-import BlogPreview from '@/components/BlogPreview'
 import ContactForm from '@/components/ContactForm'
 import Footer from '@/components/Footer'
 
@@ -40,7 +37,7 @@ const jsonLd = {
   sameAs: ['https://www.youtube.com/@lefasting'],
   jobTitle: 'Author, Creator & Digital Strategist',
   knowsAbout: ['Intermittent Fasting', 'Content Strategy', 'AI Agents', 'Personal Branding'],
-  image: 'https://jbrives.com/images/jb-hero.jpg',
+  image: 'https://jbrives.com/images/jb-hero-cafe.jpg',
   description:
     'Founder of Le Fasting and Club Fasting. Author. I help creators and entrepreneurs with strategy, branding, content production and AI agents.',
 }
@@ -54,12 +51,9 @@ export default function EnHomePage() {
       />
       <Navbar locale="en" />
       <main>
-        <Hero locale="en" />
-        <Story locale="en" />
-        <BooksSection locale="en" />
+        <HeroBg locale="en" />
         <YouTubeSection locale="en" />
         <ServicesSection locale="en" />
-        <BlogPreview locale="en" />
         <ContactForm locale="en" />
       </main>
       <Footer locale="en" />

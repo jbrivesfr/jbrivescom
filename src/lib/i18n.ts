@@ -51,9 +51,9 @@ export const translations = {
     },
     // YouTube
     youtube: {
-      heading: 'La communauté YouTube',
-      stat: '+\u00a0de 450\u00a0000 abonnés',
-      body: 'Rejoignez la communauté @lefasting — des vidéos hebdomadaires sur le jeûne, la nutrition, et la performance.',
+      heading: 'La chaîne YouTube JB Rives',
+      stat: '@jbrives',
+      body: "Je publie désormais sur ma propre chaîne : @jbrives (jeûne, nutrition, performance et coulisses d'entrepreneur). Abonnez-vous, c'est là que tout se passe.",
       cta: 'Voir la chaîne',
     },
     // Services
@@ -172,9 +172,9 @@ export const translations = {
     },
     // YouTube
     youtube: {
-      heading: 'The YouTube Community',
-      stat: '450K+ subscribers',
-      body: 'Join the @lefasting community — weekly videos on fasting, nutrition and performance.',
+      heading: 'The JB Rives YouTube Channel',
+      stat: '@jbrives',
+      body: "I now publish on my own channel: @jbrives (fasting, nutrition, performance and founder behind-the-scenes). Subscribe, that's where it all happens.",
       cta: 'Watch the Channel',
     },
     // Services

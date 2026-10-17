@@ -44,13 +44,13 @@ export default function ContactForm({ locale }: ContactFormProps) {
   }
 
   return (
-    <section id="contact" className="bg-stone-100 border-b border-stone-200">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <section id="contact" className="bg-[#F6F1F1] border-b border-[#001523]/10">
+      <div className="max-w-[1200px] mx-auto px-6 md:px-12 py-[72px] md:py-[115px]">
         <div className="max-w-2xl mx-auto">
           <p className="text-xs font-medium text-stone-400 uppercase tracking-wide mb-2 text-center">
             {locale === 'fr' ? 'Contact' : 'Contact'}
           </p>
-          <h2 className="text-2xl font-serif font-bold text-stone-800 text-center mb-4">
+          <h2 className="text-[34px] md:text-[56px] leading-[1.1] text-center mb-6">
             {t.heading}
           </h2>
           <p className="text-stone-600 text-lg text-center mb-10">

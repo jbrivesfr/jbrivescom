@@ -49,7 +49,7 @@ export default function Hero({ locale }: HeroProps) {
           <div className="flex justify-center lg:justify-end">
             <div className="relative w-[340px] h-[440px] rounded-2xl overflow-hidden bg-stone-800 shadow-2xl">
               <Image
-                src="/images/jb-hero.jpg"
+                src="/images/jb-hero-cafe.jpg"
                 alt="JB Rives — Auteur, Créateur & Stratège Digital"
                 fill
                 className="object-cover"
