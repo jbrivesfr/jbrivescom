@@ -10,7 +10,7 @@ import Footer from '@/components/Footer'
 export const dynamic = 'force-static'
 
 export const metadata: Metadata = {
-  title: 'JB Rives — Author, Creator & Digital Strategist',
+  title: 'JB Rives — Author, Creator & Solutions Provider',
   description:
     'Founder of Le Fasting and Club Fasting. Author. I help creators and entrepreneurs with strategy, branding, content production and AI agents.',
   alternates: {
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'JB Rives — Author, Creator & Digital Strategist',
+    title: 'JB Rives — Author, Creator & Solutions Provider',
     description:
       'Founder of Le Fasting and Club Fasting. Author. I help creators and entrepreneurs with strategy, branding, content production and AI agents.',
     url: 'https://jbrives.com/en',
@@ -36,7 +36,7 @@ const jsonLd = {
   name: 'JB Rives',
   url: 'https://jbrives.com',
   sameAs: ['https://www.youtube.com/@lefasting'],
-  jobTitle: 'Author, Creator & Digital Strategist',
+  jobTitle: 'Author, Creator & Solutions Provider',
   knowsAbout: ['Intermittent Fasting', 'Content Strategy', 'AI Agents', 'Personal Branding'],
   image: 'https://jbrives.com/images/jb-hero-cafe.jpg',
   description:

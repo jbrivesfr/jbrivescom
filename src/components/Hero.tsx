@@ -50,7 +50,7 @@ export default function Hero({ locale }: HeroProps) {
             <div className="relative w-[340px] h-[440px] rounded-2xl overflow-hidden bg-stone-800 shadow-2xl">
               <Image
                 src="/images/jb-hero-cafe.jpg"
-                alt="JB Rives — Auteur, Créateur & Stratège Digital"
+                alt="JB Rives — Auteur, Créateur & Fournisseur de Solutions"
                 fill
                 className="object-cover"
                 priority

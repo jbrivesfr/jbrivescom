@@ -27,7 +27,7 @@ export default function TimAbout({ locale }: TimAboutProps) {
     },
     {
       icon: Compass,
-      label: isFr ? 'Stratège digital' : 'Digital strategist',
+      label: isFr ? 'Fournisseur de Solutions' : 'Solutions Provider',
       sub: isFr ? 'SEO, contenu, conversion' : 'SEO, content, conversion',
     },
     {

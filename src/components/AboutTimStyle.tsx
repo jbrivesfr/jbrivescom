@@ -141,7 +141,7 @@ export default function AboutTimStyle({ locale }: AboutTimStyleProps) {
             },
             {
               icon: Compass,
-              label: isFr ? 'Stratège digital' : 'Digital strategist',
+              label: isFr ? 'Fournisseur de Solutions' : 'Solutions Provider',
               sub: isFr ? 'SEO, contenu, conversion' : 'SEO, content, conversion',
             },
             {

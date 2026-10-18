@@ -26,7 +26,7 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL('https://jbrives.com'),
   title: {
-    default: 'JB Rives — Auteur, Créateur & Stratège Digital',
+    default: 'JB Rives — Auteur, Créateur & Fournisseur de Solutions',
     template: '%s | JB Rives',
   },
   description:
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     locale: 'fr_FR',
     url: 'https://jbrives.com',
     siteName: 'JB Rives',
-    title: 'JB Rives — Auteur, Créateur & Stratège Digital',
+    title: 'JB Rives — Auteur, Créateur & Fournisseur de Solutions',
     description:
       'Fondateur du Fasting.fr et Club Fasting. Auteur de Le Fasting et Gras du Ventre.',
     images: [
@@ -46,13 +46,13 @@ export const metadata: Metadata = {
         url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'JB Rives — Auteur, Créateur & Stratège Digital',
+        alt: 'JB Rives — Auteur, Créateur & Fournisseur de Solutions',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'JB Rives — Auteur, Créateur & Stratège Digital',
+    title: 'JB Rives — Auteur, Créateur & Fournisseur de Solutions',
     description:
       'Fondateur du Fasting.fr. Auteur de Le Fasting et Gras du Ventre. 450K abonnés YouTube.',
     images: ['/images/og-image.jpg'],

@@ -33,7 +33,7 @@ const jsonLd = {
     name: 'JB Rives',
     url: 'https://jbrives.com',
     sameAs: ['https://www.youtube.com/@lefasting'],
-    jobTitle: 'Author, Creator & Digital Strategist',
+    jobTitle: 'Author, Creator & Solutions Provider',
   },
 }
 

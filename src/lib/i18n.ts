@@ -17,7 +17,7 @@ export const translations = {
       name: 'JB Rives',
       subtitle: 'Auteur • Producteur de contenu • Cobaye numérique',
       intro:
-        "J'ai perdu 20 kilos avec le jeûne intermittent, j'ai écrit les livres dessus, j'ai créé une communauté de 450\u00a0000 personnes sur YouTube — et maintenant j'aide les entrepreneurs à faire pareil dans leur domaine\u00a0: aller vite, aller loin, avec les bons outils.",
+        "J'ai transformé une passion pour la nutrition en livre best-seller, plus de 450\u00a0000 abonnés sur YouTube et des communautés privées qui transforment des vies. J'aide les entrepreneurs à faire pareil dans leur domaine\u00a0: aller vite, aller loin, avec les bons outils.",
       cta: 'On en parle',
     },
     // Story
@@ -108,7 +108,7 @@ export const translations = {
     },
     // Footer
     footer: {
-      tagline: 'Auteur, Créateur & Stratège Digital',
+      tagline: 'Auteur, Créateur & Fournisseur de Solutions',
       rights: '© 2024 JB Rives. Tous droits réservés.',
     },
     // About page
@@ -149,9 +149,9 @@ export const translations = {
     // Hero
     hero: {
       name: 'JB Rives',
-      subtitle: 'Author • Creator • Strategist',
+      subtitle: 'Author • Creator • Solutions Provider',
       intro:
-        "I lost 20kg with intermittent fasting, wrote the books, built a 450K YouTube community — now I help entrepreneurs do the same in their field: move fast, go far, with the right tools.",
+        "I turned a passion for nutrition into a best-selling book, 450,000+ YouTube subscribers and private communities that change lives. I help entrepreneurs do the same in their field: move fast, go far, with the right tools.",
       cta: "Let's Talk",
     },
     // Story
@@ -241,7 +241,7 @@ export const translations = {
     },
     // Footer
     footer: {
-      tagline: 'Author, Creator & Digital Strategist',
+      tagline: 'Author, Creator & Solutions Provider',
       rights: '© 2024 JB Rives. All rights reserved.',
     },
     // About page
