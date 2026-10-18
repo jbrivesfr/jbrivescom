@@ -57,8 +57,8 @@ export const translations = {
       cta: 'Voir la chaîne',
     },
     tools: {
-      heading: 'Vos outils du moment',
-      subtitle: "Les outils que je mets à votre service en ce moment.",
+      heading: 'Mes outils du moment',
+      subtitle: 'Je les partage avec vous\u00a0!',
       items: [
         { name: 'ea-topcomments', desc: "Analyse en continu les commentaires YouTube pour capter le vrai langage de votre audience sur vos niches.", url: '#' },
         { name: 'ea-seo', desc: "Observatoire SEO maison : Search Console, crawl et historique pour piloter votre référencement sans outil payant.", url: '#' },
@@ -190,8 +190,8 @@ export const translations = {
       cta: 'Watch the Channel',
     },
     tools: {
-      heading: 'Your Current Tools',
-      subtitle: 'The tools I put to work for you.',
+      heading: 'My Current Tools',
+      subtitle: 'I share them with you!',
       items: [
         { name: 'ea-topcomments', desc: "Continuously mines YouTube comments to capture your audience's real language in your niches.", url: '#' },
         { name: 'ea-seo', desc: "In-house SEO observatory: Search Console, crawl and history to steer your rankings without a paid tool.", url: '#' },
