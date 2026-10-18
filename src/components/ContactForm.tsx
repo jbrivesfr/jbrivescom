@@ -23,16 +23,30 @@ export default function ContactForm({ locale }: ContactFormProps) {
     const message = data.get('message') as string
 
     try {
-      // Endpoint interne : enregistre la demande (Cloud Logging) + forward email.
-      const res = await fetch('/api/contact', {
+      // 1) FORWARD email vers jbrives@gmail.com via Web3Forms (côté client —
+      //    requis par leur offre gratuite, qui refuse les envois serveur).
+      const w3 = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: '17dfd67d-fb00-4352-ae05-ef4e08ca135b',
+          subject: `Nouveau message depuis jbrives.com — ${name}`,
+          from_name: name,
+          name,
+          email,
+          message,
+        }),
+      })
+      // 2) ENREGISTREMENT serveur (best-effort, ne bloque pas l'utilisateur).
+      fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, message }),
-      })
-      if (res.ok) {
+      }).catch(() => {})
+      if (w3.ok) {
         setSubmitted(true)
       } else {
-        throw new Error('contact endpoint error')
+        throw new Error('web3forms error')
       }
     } catch {
       // Repli : ouvre le client mail du visiteur, pré-adressé à jbrives@gmail.com

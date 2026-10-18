@@ -24,31 +24,10 @@ export async function POST(req: Request) {
   }
 
   const record = { ts: new Date().toISOString(), name, email, message }
-  // SAVE — ligne JSON préfixée, facile à filtrer dans Cloud Logging
+  // SAVE — ligne JSON préfixée, facile à filtrer dans Cloud Logging.
+  // (L'email est envoyé côté client via Web3Forms : leur offre gratuite
+  //  n'autorise que les soumissions client, pas serveur.)
   console.log('CONTACT_REQUEST ' + JSON.stringify(record))
 
-  // FORWARD — email vers jbrives@gmail.com via Web3Forms (si clé présente)
-  let forwarded = false
-  const key = process.env.WEB3FORMS_KEY
-  if (key) {
-    try {
-      const r = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          access_key: key,
-          subject: `Nouveau message depuis jbrives.com — ${name}`,
-          from_name: name,
-          name,
-          email,
-          message,
-        }),
-      })
-      forwarded = r.ok
-    } catch {
-      // le log garde la demande même si l'email échoue
-    }
-  }
-
-  return NextResponse.json({ ok: true, forwarded })
+  return NextResponse.json({ ok: true })
 }
