@@ -35,10 +35,10 @@ const jsonLd = {
   '@type': 'Person',
   name: 'JB Rives',
   url: 'https://jbrives.com',
-  sameAs: ['https://www.youtube.com/@lefasting'],
+  sameAs: ['https://www.youtube.com/@jbrives', 'https://www.youtube.com/@lefasting'],
   jobTitle: 'Author, Creator & Solutions Provider',
   knowsAbout: ['Intermittent Fasting', 'Content Strategy', 'AI Agents', 'Personal Branding'],
-  image: 'https://jbrives.com/images/jb-hero-cafe.jpg',
+  image: 'https://jbrives.com/images/jb-hero-bg.jpg',
   description:
     'Founder of Le Fasting and Club Fasting. Author. I help creators and entrepreneurs with strategy, branding, content production and AI agents.',
 }
@@ -50,7 +50,7 @@ export default function EnHomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Navbar locale="en" />
+      <Navbar locale="en" minimal />
       <main>
         <HeroBg locale="en" />
         <YouTubeSection locale="en" />
