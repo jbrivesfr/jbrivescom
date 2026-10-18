@@ -39,11 +39,11 @@ export default function HeroBg({ locale }: HeroBgProps) {
           <h1 className="font-serif font-bold text-[44px] md:text-[68px] leading-[1.05] mb-7">
             {isFr ? (
               <>
-                Bonjour à <span className="text-[#87CEFF]">tous</span>.
+                Besoin d&apos;aller <span className="text-[#87CEFF]">plus vite</span> ?
               </>
             ) : (
               <>
-                Hello <span className="text-[#87CEFF]">everyone</span>.
+                Need to move <span className="text-[#87CEFF]">faster</span>?
               </>
             )}
           </h1>
