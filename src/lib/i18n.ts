@@ -15,9 +15,9 @@ export const translations = {
     // Hero
     hero: {
       name: 'JB Rives',
-      subtitle: 'Auteur • Producteur de contenu • Cobaye numérique',
+      subtitle: 'Producteur de contenu',
       intro:
-        "J'ai transformé une passion pour la nutrition en livre best-seller, plus de 450\u00a0000 abonnés sur YouTube et des communautés privées qui transforment des vies. J'aide les entrepreneurs à faire pareil dans leur domaine\u00a0: aller vite, aller loin, avec les bons outils.",
+        "De nature improductive, j'ai transformé une passion pour la nutrition en livre best-seller, plus de 450\u00a0000 abonnés sur YouTube et des communautés privées qui transforment des vies. Je vous aide à faire pareil dans votre domaine\u00a0: aller vite, aller loin, avec les bons outils.",
       cta: 'On en parle',
     },
     // Story
@@ -149,9 +149,9 @@ export const translations = {
     // Hero
     hero: {
       name: 'JB Rives',
-      subtitle: 'Author • Creator • Solutions Provider',
+      subtitle: 'Content Creator',
       intro:
-        "I turned a passion for nutrition into a best-selling book, 450,000+ YouTube subscribers and private communities that change lives. I help entrepreneurs do the same in their field: move fast, go far, with the right tools.",
+        "Naturally unproductive, I turned a passion for nutrition into a best-selling book, 450,000+ YouTube subscribers and private communities that change lives. I help you do the same in your field: move fast, go far, with the right tools.",
       cta: "Let's Talk",
     },
     // Story
