@@ -53,7 +53,7 @@ export const translations = {
     youtube: {
       heading: '',
       stat: '@jbrives',
-      body: "Je publie désormais sur ma propre chaîne : @jbrives (jeûne, nutrition, performance et coulisses d'entrepreneur). Abonnez-vous, c'est là que tout se passe.",
+      body: "Je publie en ce moment sur ma propre chaîne : @jbrives (jeûne, nutrition, performance et coulisses d'entrepreneur). Abonnez-vous, c'est là que tout se passe.",
       cta: 'Voir la chaîne',
     },
     tools: {
