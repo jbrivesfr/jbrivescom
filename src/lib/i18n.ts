@@ -9,7 +9,7 @@ export const translations = {
       books: 'Livres',
       blog: 'Blog',
       contact: 'Contact',
-      langSwitch: 'EN',
+      langSwitch: 'US',
       langSwitchHref: '/en',
     },
     // Hero
@@ -149,7 +149,7 @@ export const translations = {
     // Hero
     hero: {
       name: 'JB Rives',
-      subtitle: 'Content Creator',
+      subtitle: 'Content Producer',
       intro:
         "Naturally unproductive, I turned a passion for nutrition into a best-selling book, 450,000+ YouTube subscribers and private communities that change lives. I help you do the same in your field: move fast, go far, with the right tools.",
       cta: "Let's Talk",
