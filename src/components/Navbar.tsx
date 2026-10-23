@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { Terminal } from 'lucide-react'
 import { Locale, translations } from '@/lib/i18n'
 
 interface NavbarProps {
@@ -17,9 +16,12 @@ export default function Navbar({ locale, minimal = false }: NavbarProps) {
       <nav className="max-w-[1200px] mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href={prefix || '/'} className="flex items-center gap-2 group">
-          <div className="w-8 h-8 bg-[#001523] group-hover:bg-[#0071C0] transition-colors flex items-center justify-center rounded-sm">
-            <Terminal className="w-4 h-4 text-white" />
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/cap-icon.png"
+            alt="jbrives.com"
+            className="w-9 h-9 object-contain transition-transform group-hover:scale-110"
+          />
           <span className="text-sm font-bold tracking-tight text-[#001523]">jbrives.com</span>
         </Link>
 
