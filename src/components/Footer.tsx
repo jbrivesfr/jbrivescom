@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { Terminal } from 'lucide-react'
 import { Locale, translations } from '@/lib/i18n'
 
 interface FooterProps {
@@ -17,9 +16,8 @@ export default function Footer({ locale }: FooterProps) {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-7 h-7 bg-stone-700 flex items-center justify-center rounded-sm">
-                <Terminal className="w-3.5 h-3.5 text-stone-100" />
-              </div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/cap-icon.png" alt="jbrives.com" className="w-10 h-10 object-contain" />
               <span className="font-sans text-sm font-bold text-stone-100 tracking-tight">
                 jbrives.com
               </span>

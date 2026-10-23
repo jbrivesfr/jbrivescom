@@ -116,7 +116,7 @@ export const translations = {
     },
     // Footer
     footer: {
-      tagline: 'Auteur, Créateur & Fournisseur de Solutions',
+      tagline: 'Producteur de contenu',
       rights: '© 2024 JB Rives. Tous droits réservés.',
     },
     // About page
@@ -257,7 +257,7 @@ export const translations = {
     },
     // Footer
     footer: {
-      tagline: 'Author, Creator & Solutions Provider',
+      tagline: 'Content Producer',
       rights: '© 2024 JB Rives. All rights reserved.',
     },
     // About page

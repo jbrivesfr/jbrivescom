@@ -20,7 +20,7 @@ export default function Navbar({ locale, minimal = false }: NavbarProps) {
           <img
             src="/images/cap-icon.png"
             alt="jbrives.com"
-            className="w-9 h-9 object-contain transition-transform group-hover:scale-110"
+            className="w-12 h-12 object-contain transition-transform group-hover:scale-110"
           />
           <span className="text-sm font-bold tracking-tight text-[#001523]">jbrives.com</span>
         </Link>

@@ -1,10 +1,12 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import type { Locale } from '@/lib/i18n'
 
-// Numéro WhatsApp public de Claire (agent de JB, mini12).
-const CLAIRE_WA = '17096002777'
+// WhatsApp direct de JB (prise de contact directe).
+const JB_WA = '14154906663'
+// Clé publique Web3Forms (alerte email côté client, comme le formulaire d'origine).
+const WEB3FORMS_KEY = '17dfd67d-fb00-4352-ae05-ef4e08ca135b'
 
 type Step = { id: string; q: string; options: { label: string; value: string }[] }
 
@@ -80,11 +82,11 @@ const COPY = {
     back: 'Retour',
     doneTitle: 'Merci, c’est clair.',
     doneBody:
-      'Claire est mon assistante. Elle reprend vos réponses, répond aux questions pratiques et me transmet ce qui mérite mon attention. Vous pouvez lui écrire directement sur WhatsApp, votre message est déjà pré-rempli.',
-    cta: 'Parler à Claire sur WhatsApp',
-    aiNote: 'Claire est une assistante IA. Elle vous le dira elle-même — et si besoin, elle passe la main.',
+      'Écrivez-moi directement sur WhatsApp — votre message est déjà pré-rempli avec vos réponses, et je vous réponds personnellement.',
+    cta: 'M’écrire sur WhatsApp',
+    aiNote: 'Vos réponses me sont envoyées — je reviens vers vous au plus vite.',
     redo: 'Refaire le diagnostic',
-    waIntro: 'Bonjour Claire 👋 Je viens du site jbrives.com.',
+    waIntro: 'Bonjour JB 👋 Je viens du site jbrives.com.',
     waOutro: "J'aimerais en parler.",
   },
   en: {
@@ -92,11 +94,11 @@ const COPY = {
     back: 'Back',
     doneTitle: 'Thanks, that’s clear.',
     doneBody:
-      "Claire is my assistant. She takes your answers, handles the practical questions and passes on to me what deserves my attention. You can write to her directly on WhatsApp — your message is already pre-filled.",
-    cta: 'Talk to Claire on WhatsApp',
-    aiNote: "Claire is an AI assistant. She'll tell you so herself — and if needed, she hands off.",
+      'Message me directly on WhatsApp — your message is pre-filled with your answers, and I reply personally.',
+    cta: 'Message me on WhatsApp',
+    aiNote: 'Your answers are sent to me — I’ll get back to you shortly.',
     redo: 'Retake the diagnostic',
-    waIntro: 'Hi Claire 👋 I’m coming from jbrives.com.',
+    waIntro: 'Hi JB 👋 I’m coming from jbrives.com.',
     waOutro: "I'd like to talk about it.",
   },
 } as const
@@ -118,8 +120,32 @@ export default function Diagnostic({ locale = 'fr' }: { locale?: Locale }) {
       '',
       c.waOutro,
     ]
-    return `https://wa.me/${CLAIRE_WA}?text=${encodeURIComponent(lines.join('\n'))}`
+    return `https://wa.me/${JB_WA}?text=${encodeURIComponent(lines.join('\n'))}`
   }, [answers, STEPS, c])
+
+  // À la fin du diagnostic : on garde les réponses (save serveur) + alerte email
+  // (Web3Forms côté client), comme le formulaire d'origine. Une seule fois.
+  const sentRef = useRef(false)
+  useEffect(() => {
+    if (!done || sentRef.current) return
+    sentRef.current = true
+    const summary = STEPS.map((s) => `${s.q.replace(' ?', '')} : ${answers[s.id]}`).join('\n')
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_KEY,
+        subject: 'Nouveau diagnostic jbrives.com',
+        from_name: 'Diagnostic jbrives.com',
+        message: summary,
+      }),
+    }).catch(() => {})
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type: 'diagnostic', message: summary, answers, locale }),
+    }).catch(() => {})
+  }, [done, answers, STEPS, locale])
 
   function choose(stepId: string, value: string) {
     setAnswers((prev) => ({ ...prev, [stepId]: value }))

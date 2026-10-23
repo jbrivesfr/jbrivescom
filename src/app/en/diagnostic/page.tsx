@@ -6,7 +6,7 @@ import Diagnostic from '@/components/Diagnostic'
 export const metadata: Metadata = {
   title: 'Diagnostic in 3 questions',
   description:
-    "Three questions to place where you stand, then you talk directly to Claire, JB Rives's assistant, on WhatsApp.",
+    'Three questions to place where you stand, then you message JB Rives directly on WhatsApp.',
   alternates: { canonical: 'https://jbrives.com/en/diagnostic' },
   robots: { index: true, follow: true },
 }
@@ -23,8 +23,8 @@ export default function DiagnosticPageEn() {
               Where exactly is it stuck?
             </h1>
             <p className="text-[15px] leading-relaxed text-neutral-600">
-              Three questions to place your situation. Then you talk directly to Claire — she takes your
-              answers and passes on to me what matters.
+              Three questions to place your situation. Then you message me directly on WhatsApp — your
+              answers are pre-filled, and I reply personally.
             </p>
           </div>
           <Diagnostic locale="en" />

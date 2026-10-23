@@ -6,7 +6,7 @@ import Diagnostic from '@/components/Diagnostic'
 export const metadata: Metadata = {
   title: 'Diagnostic en 3 questions',
   description:
-    "Trois questions pour situer où vous en êtes, puis vous parlez directement à Claire, l'assistante de JB Rives, sur WhatsApp.",
+    "Trois questions pour situer où vous en êtes, puis vous écrivez directement à JB Rives sur WhatsApp.",
   alternates: { canonical: 'https://jbrives.com/diagnostic' },
   robots: { index: true, follow: true },
 }
@@ -23,8 +23,8 @@ export default function DiagnosticPage() {
               Où est-ce que ça bloque, concrètement&nbsp;?
             </h1>
             <p className="text-[15px] leading-relaxed text-neutral-600">
-              Trois questions pour situer votre situation. Ensuite, vous parlez directement à Claire —
-              elle reprend vos réponses et me transmet ce qui compte.
+              Trois questions pour situer votre situation. Ensuite, vous m’écrivez directement sur
+              WhatsApp — vos réponses sont déjà pré-remplies, je vous réponds personnellement.
             </p>
           </div>
           <Diagnostic />
