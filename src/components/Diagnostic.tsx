@@ -88,6 +88,9 @@ const COPY = {
     redo: 'Refaire le diagnostic',
     waIntro: 'Bonjour JB 👋 Je viens du site jbrives.com.',
     waOutro: "J'aimerais en parler.",
+    formName: 'Prénom',
+    formEmail: 'Email',
+    formError: 'Merci de renseigner un prénom et un email valides.',
   },
   en: {
     qLabel: (a: number, b: number) => `Question ${a} / ${b}`,
@@ -100,6 +103,9 @@ const COPY = {
     redo: 'Retake the diagnostic',
     waIntro: 'Hi JB 👋 I’m coming from jbrives.com.',
     waOutro: "I'd like to talk about it.",
+    formName: 'First name',
+    formEmail: 'Email',
+    formError: 'Please enter a valid first name and email.',
   },
 } as const
 
@@ -108,6 +114,10 @@ export default function Diagnostic({ locale = 'fr' }: { locale?: Locale }) {
   const c = COPY[locale === 'en' ? 'en' : 'fr']
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [step, setStep] = useState(0)
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [sending, setSending] = useState(false)
+  const [err, setErr] = useState('')
 
   const done = Object.keys(answers).length === STEPS.length
   const current = STEPS[step]
@@ -122,30 +132,6 @@ export default function Diagnostic({ locale = 'fr' }: { locale?: Locale }) {
     ]
     return `https://wa.me/${JB_WA}?text=${encodeURIComponent(lines.join('\n'))}`
   }, [answers, STEPS, c])
-
-  // À la fin du diagnostic : on garde les réponses (save serveur) + alerte email
-  // (Web3Forms côté client), comme le formulaire d'origine. Une seule fois.
-  const sentRef = useRef(false)
-  useEffect(() => {
-    if (!done || sentRef.current) return
-    sentRef.current = true
-    const summary = STEPS.map((s) => `${s.q.replace(' ?', '')} : ${answers[s.id]}`).join('\n')
-    fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify({
-        access_key: WEB3FORMS_KEY,
-        subject: 'Nouveau diagnostic jbrives.com',
-        from_name: 'Diagnostic jbrives.com',
-        message: summary,
-      }),
-    }).catch(() => {})
-    fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ type: 'diagnostic', message: summary, answers, locale }),
-    }).catch(() => {})
-  }, [done, answers, STEPS, locale])
 
   function choose(stepId: string, value: string) {
     setAnswers((prev) => ({ ...prev, [stepId]: value }))
@@ -212,20 +198,79 @@ export default function Diagnostic({ locale = 'fr' }: { locale?: Locale }) {
             ))}
           </div>
 
-          <a
-            href={waLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-neutral-900 px-6 py-4 text-[15px] font-medium text-white transition hover:bg-neutral-800 sm:w-auto"
+          <form
+            onSubmit={(e) => {
+              e.preventDefault()
+              if (name.trim().length < 2 || !/.+@.+\..+/.test(email.trim())) {
+                setErr(c.formError)
+                return
+              }
+              setErr('')
+              setSending(true)
+              const summary = STEPS.map((s2) => `${s2.q.replace(' ?', '')} : ${answers[s2.id]}`).join('\n')
+
+              // alerte email (même canal que le formulaire d'origine)
+              fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                body: JSON.stringify({
+                  access_key: WEB3FORMS_KEY,
+                  subject: `Diagnostic jbrives.com — ${name.trim()}`,
+                  from_name: name.trim(),
+                  name: name.trim(),
+                  email: email.trim(),
+                  message: summary,
+                }),
+              }).catch(() => {})
+
+              // enregistrement serveur (données gardées)
+              fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  name: name.trim(),
+                  email: email.trim(),
+                  message: `Diagnostic jbrives.com\n${summary}`,
+                }),
+              }).catch(() => {})
+
+              window.open(waLink, '_blank', 'noopener,noreferrer')
+              setSending(false)
+            }}
+            className="flex flex-col gap-3 sm:flex-row"
           >
-            {c.cta}
-          </a>
-          <p className="mt-4 text-xs text-neutral-500">{c.aiNote}</p>
+            <input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder={c.formName}
+              autoComplete="given-name"
+              className="w-full rounded-xl border border-neutral-300 px-4 py-3 text-[15px] outline-none focus:border-neutral-900 sm:w-40"
+            />
+            <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              placeholder={c.formEmail}
+              autoComplete="email"
+              className="w-full rounded-xl border border-neutral-300 px-4 py-3 text-[15px] outline-none focus:border-neutral-900 sm:flex-1"
+            />
+            <button
+              type="submit"
+              disabled={sending}
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-neutral-900 px-6 py-3 text-[15px] font-medium text-white transition hover:bg-neutral-800 disabled:opacity-60"
+            >
+              {sending ? '…' : c.cta}
+            </button>
+          </form>
+          {err && <p className="mt-3 text-sm text-red-600">{err}</p>}
+          <p className="mt-3 text-xs text-neutral-500">{c.aiNote}</p>
 
           <button
             onClick={() => {
               setAnswers({})
               setStep(0)
+              setName('')
+              setEmail('')
             }}
             className="mt-6 block text-sm text-neutral-500 underline underline-offset-4 hover:text-neutral-900"
           >

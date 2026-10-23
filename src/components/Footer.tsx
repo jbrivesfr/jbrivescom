@@ -17,7 +17,7 @@ export default function Footer({ locale }: FooterProps) {
           <div>
             <div className="flex items-center gap-2 mb-3">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/cap-icon.png" alt="jbrives.com" className="w-10 h-10 object-contain" />
+              <img src="/images/cap-icon.png" alt="jbrives.com" className="w-11 h-11 object-contain" />
               <span className="font-sans text-sm font-bold text-stone-100 tracking-tight">
                 jbrives.com
               </span>
