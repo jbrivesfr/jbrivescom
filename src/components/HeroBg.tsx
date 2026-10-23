@@ -51,7 +51,7 @@ export default function HeroBg({ locale }: HeroBgProps) {
             {t.intro}
           </p>
           <a
-            href="#contact"
+            href={`${locale === 'en' ? '/en' : ''}/diagnostic`}
             className="inline-block bg-[#0071C0] hover:bg-[#005c9c] text-white font-semibold px-8 py-4 rounded-lg transition"
           >
             {t.cta}
