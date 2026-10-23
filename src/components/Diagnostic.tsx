@@ -1,13 +1,14 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import type { Locale } from '@/lib/i18n'
 
 // Numéro WhatsApp public de Claire (agent de JB, mini12).
 const CLAIRE_WA = '17096002777'
 
-type Step = { id: string; q: string; help?: string; options: { label: string; value: string }[] }
+type Step = { id: string; q: string; options: { label: string; value: string }[] }
 
-const STEPS: Step[] = [
+const STEPS_FR: Step[] = [
   {
     id: 'profil',
     q: 'Vous êtes plutôt…',
@@ -40,7 +41,69 @@ const STEPS: Step[] = [
   },
 ]
 
-export default function Diagnostic() {
+const STEPS_EN: Step[] = [
+  {
+    id: 'profil',
+    q: 'You are more of a…',
+    options: [
+      { label: 'Content creator', value: 'content creator' },
+      { label: 'Entrepreneur / online business', value: 'entrepreneur' },
+      { label: 'Solopreneur or small agency', value: 'solopreneur / agency' },
+      { label: 'Other', value: 'other profile' },
+    ],
+  },
+  {
+    id: 'frein',
+    q: 'Right now, what holds you back the most?',
+    options: [
+      { label: 'Too many manual tasks eating my days', value: 'too many manual tasks' },
+      { label: 'No time to produce (content, offers, follow-up)', value: 'no time to produce' },
+      { label: 'I lose track of my ideas and projects', value: 'losing track of ideas' },
+      { label: "I don't know where to start", value: "doesn't know where to start" },
+    ],
+  },
+  {
+    id: 'objectif',
+    q: 'Over the next 90 days, your goal?',
+    options: [
+      { label: 'Launch something new', value: 'launch' },
+      { label: 'Automate what I already do', value: 'automate' },
+      { label: 'Scale up (more clients, more content)', value: 'scale' },
+      { label: 'Stop spreading myself thin and finish what I start', value: 'refocus' },
+    ],
+  },
+]
+
+const COPY = {
+  fr: {
+    qLabel: (a: number, b: number) => `Question ${a} / ${b}`,
+    back: 'Retour',
+    doneTitle: 'Merci, c’est clair.',
+    doneBody:
+      'Claire est mon assistante. Elle reprend vos réponses, répond aux questions pratiques et me transmet ce qui mérite mon attention. Vous pouvez lui écrire directement sur WhatsApp, votre message est déjà pré-rempli.',
+    cta: 'Parler à Claire sur WhatsApp',
+    aiNote: 'Claire est une assistante IA. Elle vous le dira elle-même — et si besoin, elle passe la main.',
+    redo: 'Refaire le diagnostic',
+    waIntro: 'Bonjour Claire 👋 Je viens du site jbrives.com.',
+    waOutro: "J'aimerais en parler.",
+  },
+  en: {
+    qLabel: (a: number, b: number) => `Question ${a} / ${b}`,
+    back: 'Back',
+    doneTitle: 'Thanks, that’s clear.',
+    doneBody:
+      "Claire is my assistant. She takes your answers, handles the practical questions and passes on to me what deserves my attention. You can write to her directly on WhatsApp — your message is already pre-filled.",
+    cta: 'Talk to Claire on WhatsApp',
+    aiNote: "Claire is an AI assistant. She'll tell you so herself — and if needed, she hands off.",
+    redo: 'Retake the diagnostic',
+    waIntro: 'Hi Claire 👋 I’m coming from jbrives.com.',
+    waOutro: "I'd like to talk about it.",
+  },
+} as const
+
+export default function Diagnostic({ locale = 'fr' }: { locale?: Locale }) {
+  const STEPS = locale === 'en' ? STEPS_EN : STEPS_FR
+  const c = COPY[locale === 'en' ? 'en' : 'fr']
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [step, setStep] = useState(0)
 
@@ -49,14 +112,14 @@ export default function Diagnostic() {
 
   const waLink = useMemo(() => {
     const lines = [
-      "Bonjour Claire 👋 Je viens du site jbrives.com.",
+      c.waIntro,
       '',
       ...STEPS.map((s) => `• ${s.q} → ${answers[s.id] || '—'}`),
       '',
-      "J'aimerais en parler.",
+      c.waOutro,
     ]
     return `https://wa.me/${CLAIRE_WA}?text=${encodeURIComponent(lines.join('\n'))}`
-  }, [answers])
+  }, [answers, STEPS, c])
 
   function choose(stepId: string, value: string) {
     setAnswers((prev) => ({ ...prev, [stepId]: value }))
@@ -80,7 +143,7 @@ export default function Diagnostic() {
       {!done ? (
         <div>
           <p className="mb-2 text-xs uppercase tracking-widest text-neutral-500">
-            Question {step + 1} / {STEPS.length}
+            {c.qLabel(step + 1, STEPS.length)}
           </p>
           <h2 className="mb-6 text-2xl font-semibold leading-snug text-neutral-900 sm:text-3xl">
             {current.q}
@@ -105,20 +168,14 @@ export default function Diagnostic() {
               onClick={() => setStep(step - 1)}
               className="mt-6 text-sm text-neutral-500 underline underline-offset-4 hover:text-neutral-900"
             >
-              Retour
+              {c.back}
             </button>
           )}
         </div>
       ) : (
         <div>
-          <h2 className="mb-3 text-2xl font-semibold text-neutral-900 sm:text-3xl">
-            Merci, c’est clair.
-          </h2>
-          <p className="mb-6 text-[15px] leading-relaxed text-neutral-600">
-            Claire est mon assistante. Elle reprend vos réponses, répond aux questions pratiques et me
-            transmet ce qui mérite mon attention. Vous pouvez lui écrire directement sur WhatsApp,
-            votre message est déjà pré-rempli.
-          </p>
+          <h2 className="mb-3 text-2xl font-semibold text-neutral-900 sm:text-3xl">{c.doneTitle}</h2>
+          <p className="mb-6 text-[15px] leading-relaxed text-neutral-600">{c.doneBody}</p>
 
           <div className="mb-6 rounded-xl border border-neutral-200 bg-neutral-50 p-4 text-sm">
             {STEPS.map((s) => (
@@ -135,11 +192,9 @@ export default function Diagnostic() {
             rel="noopener noreferrer"
             className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-neutral-900 px-6 py-4 text-[15px] font-medium text-white transition hover:bg-neutral-800 sm:w-auto"
           >
-            Parler à Claire sur WhatsApp
+            {c.cta}
           </a>
-          <p className="mt-4 text-xs text-neutral-500">
-            Claire est une assistante IA. Elle vous le dira elle-même — et si besoin, elle passe la main.
-          </p>
+          <p className="mt-4 text-xs text-neutral-500">{c.aiNote}</p>
 
           <button
             onClick={() => {
@@ -148,7 +203,7 @@ export default function Diagnostic() {
             }}
             className="mt-6 block text-sm text-neutral-500 underline underline-offset-4 hover:text-neutral-900"
           >
-            Refaire le diagnostic
+            {c.redo}
           </button>
         </div>
       )}
