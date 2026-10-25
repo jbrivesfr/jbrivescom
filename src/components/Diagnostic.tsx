@@ -89,8 +89,7 @@ const COPY = {
     waIntro: 'Bonjour JB 👋 Je viens du site jbrives.com.',
     waOutro: "J'aimerais en parler.",
     formName: 'Prénom',
-    formEmail: 'Email',
-    formError: 'Merci de renseigner un prénom et un email valides.',
+    formError: 'Merci de renseigner votre prénom.',
   },
   en: {
     qLabel: (a: number, b: number) => `Question ${a} / ${b}`,
@@ -104,8 +103,7 @@ const COPY = {
     waIntro: 'Hi JB 👋 I’m coming from jbrives.com.',
     waOutro: "I'd like to talk about it.",
     formName: 'First name',
-    formEmail: 'Email',
-    formError: 'Please enter a valid first name and email.',
+    formError: 'Please enter your first name.',
   },
 } as const
 
@@ -115,7 +113,6 @@ export default function Diagnostic({ locale = 'fr' }: { locale?: Locale }) {
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [step, setStep] = useState(0)
   const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
   const [sending, setSending] = useState(false)
   const [err, setErr] = useState('')
 
@@ -201,7 +198,7 @@ export default function Diagnostic({ locale = 'fr' }: { locale?: Locale }) {
           <form
             onSubmit={(e) => {
               e.preventDefault()
-              if (name.trim().length < 2 || !/.+@.+\..+/.test(email.trim())) {
+              if (name.trim().length < 2) {
                 setErr(c.formError)
                 return
               }
@@ -218,7 +215,6 @@ export default function Diagnostic({ locale = 'fr' }: { locale?: Locale }) {
                   subject: `Diagnostic jbrives.com — ${name.trim()}`,
                   from_name: name.trim(),
                   name: name.trim(),
-                  email: email.trim(),
                   message: summary,
                 }),
               }).catch(() => {})
@@ -229,7 +225,6 @@ export default function Diagnostic({ locale = 'fr' }: { locale?: Locale }) {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                   name: name.trim(),
-                  email: email.trim(),
                   message: `Diagnostic jbrives.com\n${summary}`,
                 }),
               }).catch(() => {})
@@ -244,14 +239,6 @@ export default function Diagnostic({ locale = 'fr' }: { locale?: Locale }) {
               onChange={(e) => setName(e.target.value)}
               placeholder={c.formName}
               autoComplete="given-name"
-              className="w-full rounded-xl border border-neutral-300 px-4 py-3 text-[15px] outline-none focus:border-neutral-900 sm:w-40"
-            />
-            <input
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              type="email"
-              placeholder={c.formEmail}
-              autoComplete="email"
               className="w-full rounded-xl border border-neutral-300 px-4 py-3 text-[15px] outline-none focus:border-neutral-900 sm:flex-1"
             />
             <button
@@ -270,7 +257,6 @@ export default function Diagnostic({ locale = 'fr' }: { locale?: Locale }) {
               setAnswers({})
               setStep(0)
               setName('')
-              setEmail('')
             }}
             className="mt-6 block text-sm text-neutral-500 underline underline-offset-4 hover:text-neutral-900"
           >
