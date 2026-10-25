@@ -98,7 +98,7 @@ export const translations = {
     // Contact
     contact: {
       heading: 'On en parle',
-      body: 'Une question sur mes outils ou mes méthodes\u00a0? Dites-m\'en deux mots, Claire vous répond.',
+      body: 'Une question sur mes outils ou mes méthodes\u00a0? Dites-m\'en deux mots, je vous réponds directement.',
       q1: 'Qu\'est-ce qui vous intéresse\u00a0?',
       optTools: 'Vos outils',
       optToolsDesc: 'Les agents & outils que j\'utilise au quotidien',
@@ -110,9 +110,9 @@ export const translations = {
       goalPrompt: 'En une phrase\u00a0: votre projet ou ce que vous voulez accélérer',
       goalPlaceholder: 'Ex\u00a0: automatiser ma production de contenu…',
       back: 'Retour',
-      cta: 'Discuter avec Claire sur WhatsApp',
-      claireNote: 'Claire est l\'assistante IA de JB. Elle vous répond directement sur WhatsApp et fait le pont avec lui.',
-      waTemplate: 'Bonjour Claire\u00a0! Je viens de jbrives.com. Moi c\'est {name}. Ce qui m\'intéresse\u00a0: {interest}. Mon projet\u00a0: {goal}',
+      cta: 'M\'écrire sur WhatsApp',
+      claireNote: 'Vous échangez directement avec moi sur WhatsApp.',
+      waTemplate: 'Bonjour JB\u00a0! Je viens de jbrives.com. Moi c\'est {name}. Ce qui m\'intéresse\u00a0: {interest}. Mon projet\u00a0: {goal}',
     },
     // Footer
     footer: {
@@ -239,7 +239,7 @@ export const translations = {
     // Contact
     contact: {
       heading: "Let's Talk",
-      body: 'A question about my tools or my methods? Tell Claire in a few words, she\'ll reply.',
+      body: 'A question about my tools or my methods? Tell me in a few words, I\'ll reply directly.',
       q1: 'What are you interested in?',
       optTools: 'Your tools',
       optToolsDesc: 'The agents & tools I use every day',
@@ -251,9 +251,9 @@ export const translations = {
       goalPrompt: 'In one sentence: your project or what you want to speed up',
       goalPlaceholder: 'E.g. automate my content production…',
       back: 'Back',
-      cta: 'Chat with Claire on WhatsApp',
-      claireNote: "Claire is JB's AI assistant. She replies directly on WhatsApp and bridges you to him.",
-      waTemplate: "Hi Claire! I'm coming from jbrives.com. I'm {name}. I'm interested in: {interest}. My project: {goal}",
+      cta: 'Message me on WhatsApp',
+      claireNote: 'You chat directly with me on WhatsApp.',
+      waTemplate: "Hi JB! I'm coming from jbrives.com. I'm {name}. I'm interested in: {interest}. My project: {goal}",
     },
     // Footer
     footer: {

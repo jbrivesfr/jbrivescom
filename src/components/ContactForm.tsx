@@ -6,8 +6,8 @@ interface ContactFormProps {
 }
 
 // Section de contact (bas de page d'accueil) : un CTA propre vers le funnel
-// /diagnostic, qui se termine en click-to-chat WhatsApp vers Claire (assistante
-// IA de JB). Pas de DB, pas d'email.
+// /diagnostic, qui se termine en click-to-chat WhatsApp direct vers JB.
+// Pas de DB, pas d'email.
 export default function ContactForm({ locale }: ContactFormProps) {
   const t = translations[locale].contact
   const href = `${locale === 'en' ? '/en' : ''}/diagnostic`
