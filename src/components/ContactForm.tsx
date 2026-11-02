@@ -6,7 +6,7 @@ interface ContactFormProps {
 }
 
 // Section de contact (bas de page d'accueil) : un CTA propre vers le funnel
-// /diagnostic, qui se termine en click-to-chat WhatsApp direct vers JB.
+// /diagnostic (Score IA en FR, diagnostic 3 questions en EN), qui se termine sur WhatsApp.
 // Pas de DB, pas d'email.
 export default function ContactForm({ locale }: ContactFormProps) {
   const t = translations[locale].contact
@@ -24,7 +24,7 @@ export default function ContactForm({ locale }: ContactFormProps) {
             href={href}
             className="inline-flex items-center justify-center gap-2 bg-[#001523] hover:bg-[#0071C0] text-white font-bold py-4 px-8 rounded-lg shadow-lg transition hover:-translate-y-0.5 text-base"
           >
-            {locale === 'fr' ? 'Faire le diagnostic en 3 questions' : 'Take the 3-question diagnostic'}
+            {locale === 'fr' ? 'Faire le Score IA en 2 minutes' : 'Take the 3-question diagnostic'}
             <span aria-hidden="true">→</span>
           </Link>
 

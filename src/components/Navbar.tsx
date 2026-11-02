@@ -45,7 +45,7 @@ export default function Navbar({ locale, minimal = false }: NavbarProps) {
                 href={`${prefix}/diagnostic`}
                 className="text-sm font-medium text-[#001523]/70 hover:text-[#001523] transition-colors"
               >
-                Diagnostic
+                {locale === 'fr' ? 'Score IA' : 'Diagnostic'}
               </Link>
               <a
                 href="#contact"

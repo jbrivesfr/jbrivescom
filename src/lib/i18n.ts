@@ -98,7 +98,7 @@ export const translations = {
     // Contact
     contact: {
       heading: 'On en parle',
-      body: 'Une question sur mes outils ou mes méthodes\u00a0? Dites-m\'en deux mots, je vous réponds directement.',
+      body: 'Une question sur mes outils ou mes méthodes\u00a0? Commencez par le Score IA, on en parle ensuite.',
       q1: 'Qu\'est-ce qui vous intéresse\u00a0?',
       optTools: 'Vos outils',
       optToolsDesc: 'Les agents & outils que j\'utilise au quotidien',
@@ -111,7 +111,7 @@ export const translations = {
       goalPlaceholder: 'Ex\u00a0: automatiser ma production de contenu…',
       back: 'Retour',
       cta: 'M\'écrire sur WhatsApp',
-      claireNote: 'Vous échangez directement avec moi sur WhatsApp.',
+      claireNote: 'Sur WhatsApp, Jean, mon assistant IA, reprend vos réponses et organise l\'appel avec moi.',
       waTemplate: 'Bonjour JB\u00a0! Je viens de jbrives.com. Moi c\'est {name}. Ce qui m\'intéresse\u00a0: {interest}. Mon projet\u00a0: {goal}',
     },
     // Footer
