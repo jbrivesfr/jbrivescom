@@ -3,8 +3,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { Locale } from '@/lib/i18n'
 
-// WhatsApp direct de JB (prise de contact directe).
-const JB_WA = '14154906663'
+// WhatsApp de Jean, l'assistant IA de JB (profil « Flawless Prod »), qui organise l'appel avec JB — JB 02/11/2026.
+const JEAN_WA = '16192125285'
 // Clé publique Web3Forms (alerte email côté client, comme le formulaire d'origine).
 const WEB3FORMS_KEY = '17dfd67d-fb00-4352-ae05-ef4e08ca135b'
 
@@ -82,11 +82,11 @@ const COPY = {
     back: 'Retour',
     doneTitle: 'Merci, c’est clair.',
     doneBody:
-      'Écrivez-moi directement sur WhatsApp — votre message est déjà pré-rempli avec vos réponses, et je vous réponds personnellement.',
-    cta: 'M’écrire sur WhatsApp',
-    aiNote: 'Vos réponses me sont envoyées — je reviens vers vous au plus vite.',
+      'Écrivez à Jean, mon assistant IA, sur WhatsApp — votre message est déjà pré-rempli avec vos réponses. Il organise ensuite l’appel avec moi.',
+    cta: 'Discuter avec Jean sur WhatsApp',
+    aiNote: 'Vos réponses sont transmises à Jean, mon assistant IA, uniquement pour préparer l’échange.',
     redo: 'Refaire le diagnostic',
-    waIntro: 'Bonjour JB 👋 Je viens du site jbrives.com.',
+    waIntro: 'Bonjour Jean 👋 Je viens du site jbrives.com.',
     waOutro: "J'aimerais en parler.",
     formName: 'Prénom',
     formError: 'Merci de renseigner votre prénom.',
@@ -96,11 +96,11 @@ const COPY = {
     back: 'Back',
     doneTitle: 'Thanks, that’s clear.',
     doneBody:
-      'Message me directly on WhatsApp — your message is pre-filled with your answers, and I reply personally.',
-    cta: 'Message me on WhatsApp',
-    aiNote: 'Your answers are sent to me — I’ll get back to you shortly.',
+      'Message Jean, my AI assistant, on WhatsApp — your message is pre-filled with your answers. He then sets up the call with me.',
+    cta: 'Chat with Jean on WhatsApp',
+    aiNote: 'Your answers go to Jean, my AI assistant, only to prepare our conversation.',
     redo: 'Retake the diagnostic',
-    waIntro: 'Hi JB 👋 I’m coming from jbrives.com.',
+    waIntro: 'Hi Jean 👋 I’m coming from jbrives.com.',
     waOutro: "I'd like to talk about it.",
     formName: 'First name',
     formError: 'Please enter your first name.',
@@ -127,7 +127,7 @@ export default function Diagnostic({ locale = 'fr' }: { locale?: Locale }) {
       '',
       c.waOutro,
     ]
-    return `https://wa.me/${JB_WA}?text=${encodeURIComponent(lines.join('\n'))}`
+    return `https://wa.me/${JEAN_WA}?text=${encodeURIComponent(lines.join('\n'))}`
   }, [answers, STEPS, c])
 
   function choose(stepId: string, value: string) {
